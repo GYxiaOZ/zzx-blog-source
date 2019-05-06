@@ -14,7 +14,7 @@ avator: https://avatars0.githubusercontent.com/u/15631279?s=460&v=4
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://xiaoz.netlify.com/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:

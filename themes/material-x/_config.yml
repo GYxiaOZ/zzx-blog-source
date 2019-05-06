@@ -68,13 +68,16 @@ cover:
     - name: 博文
       icon: fas fa-rss
       url: /
-    - name: 项目
-      icon: fas fa-code-branch
-      url: projects/
-    - name: 友链
-      icon: fas fa-link
-      url: friends/
-      rel: nofollow
+    - name: 分类
+      icon: fas fa-folder-open
+      url: categories/
+    # - name: 项目
+    #   icon: fas fa-code-branch
+    #   url: projects/
+    # - name: 友链
+    #   icon: fas fa-link
+    #   url: friends/
+    #   rel: nofollow
     - name: 关于
       icon: fas fa-info-circle
       url: about/
@@ -83,20 +86,20 @@ cover:
 
 # 桌面端导航栏菜单
 menu_desktop:
-  - name: 示例
-    icon: fas fa-grin
-    url: /
+  # - name: 示例
+  #   icon: fas fa-grin
+  #   url: /
   - name: 分类
     icon: fas fa-folder-open
-    url: blog/categories/
+    url: categories/
     rel: nofollow
   - name: 标签
     icon: fas fa-hashtag
-    url: blog/tags/
+    url: tags/
     rel: nofollow
   - name: 归档
     icon: fas fa-archive
-    url: blog/archives/
+    url: archives/
     rel: nofollow
 
 # 手机端导航菜单（从右上角的按钮点击展开）
@@ -106,19 +109,19 @@ menu_mobile:
     url: /
   - name: 文章归档
     icon: fas fa-archive
-    url: blog/archives/
+    url: archives/
     rel: nofollow
-  - name: 开源项目
-    icon: fas fa-code-branch
-    url: projects/
-  - name: 我的友链
-    icon: fas fa-link
-    url: friends/
-    rel: nofollow
-  - name: 主题文档
-    icon: fas fa-book
-    url: https://xaoxuu.com/wiki/material-x/
-    rel: nofollow
+  # - name: 开源项目
+  #   icon: fas fa-code-branch
+  #   url: projects/
+  # - name: 我的友链
+  #   icon: fas fa-link
+  #   url: friends/
+  #   rel: nofollow
+  # - name: 主题文档
+  #   icon: fas fa-book
+  #   url: https://xaoxuu.com/wiki/material-x/
+  #   rel: nofollow
   - name: 关于小站
     icon: fas fa-info-circle
     url: about/
@@ -149,19 +152,19 @@ sidebar:
         url: /
       - name: 文章归档
         icon: fas fa-archive
-        url: blog/archives/
+        url: archives/
         rel: nofollow
-      - name: 开源项目
-        icon: fas fa-code-branch
-        url: projects/
-      - name: 我的友链
-        icon: fas fa-link
-        url: friends/
-        rel: nofollow
-      - name: 主题文档
-        icon: fas fa-book
-        url: https://xaoxuu.com/wiki/material-x/
-        rel: nofollow
+      # - name: 开源项目
+      #   icon: fas fa-code-branch
+      #   url: projects/
+      # - name: 我的友链
+      #   icon: fas fa-link
+      #   url: friends/
+      #   rel: nofollow
+      # - name: 主题文档
+      #   icon: fas fa-book
+      #   url: https://xaoxuu.com/wiki/material-x/
+      #   rel: nofollow
       - name: 关于小站
         icon: fas fa-info-circle
         url: about/
@@ -169,13 +172,13 @@ sidebar:
   - widget: category
     more:
       icon: fas fa-expand-arrows-alt
-      url: blog/categories/
+      url: categories/
       rel: nofollow
   - widget: tagcloud
     icon: fas fa-fire
     more:
       icon: fas fa-expand-arrows-alt
-      url: blog/tags/
+      url: tags/
       rel: nofollow
   # - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
   - widget: music
@@ -194,7 +197,7 @@ sidebar:
 # 社交信息
 social:
   - icon: fas fa-rss
-    url: atom.xml
+    url: /
   - icon: fas fa-envelope
     url: mailto:420628272@qq.com
   - icon: fab fa-github
