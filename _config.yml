@@ -11,10 +11,11 @@ author: zzx
 language: zh-CN
 timezone:
 avator: https://avatars0.githubusercontent.com/u/15631279?s=460&v=4
+favicon: https://cdn.jsdelivr.net/gh/gyxiaoz/image-hosting@master/favicon.ico
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blog.xiaoz.site/
+url: https://blog.xiaoz.site/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -100,3 +101,10 @@ live2d:
     # use: wanko # 博客根目录/live2d_models/ 下的目录名
     # use: ./wives/wanko # 相对于博客根目录的路径
     # use: https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json # 你的自定义 url
+
+gitalk:
+  clientID: b47f7f87ab36b5710ada
+  clientSecret: 6505e07454b9a8a14369a514bf78ea33c69dba95
+  repo: zzx-blog-source
+  owner: GYxiaOZ
+  admin: [GYxiaOZ]

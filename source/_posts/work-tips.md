@@ -1,9 +1,8 @@
 ---
 title: 工作中总结的问题
 date: 2019-04-26 09:56:55
-categories: [Work]
-tags:
-    - tips
+categories: [work]
+tags: [tips]
 ---
 
 ## 各种杂项
