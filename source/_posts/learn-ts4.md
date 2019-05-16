@@ -106,3 +106,36 @@ let pickedCard = cardPicker()
 
 console.log('card: ' + pickedCard.card + ' of ' + pickedCard.suit)
 ```
+
+## 函数重载
+
+JavaScript 本身是个动态语言。JavaScript 里函数根据传入不同的参数而返回不同类型的数据的场景是很常见的。
+方法是为同一个函数提供多个函数类型定义来进行函数重载。 编译器会根据这个列表去处理函数的调用。
+
+```typescript
+let suits = ['hearts', 'spades', 'clubs', 'diamonds']
+
+function pickCard(x: {suit: string; card: number }[]): number
+function pickCard(x: number): {suit: string; card: number }
+
+function pickCard(x): any {
+  if (Array.isArray(x)) {
+    let pickedCard = Math.floor(Math.random() * x.length)
+    return pickedCard
+  } else if (typeof x === 'number') {
+    let pickedSuit = Math.floor(x / 13)
+    return { suit: suits[pickedSuit], card: x % 13 }
+  }
+}
+
+let myDeck = [
+  { suit: 'diamonds', card: 2 },
+  { suit: 'spades', card: 10 },
+  { suit: 'hearts', card: 4 }
+]
+let pickedCard1 = myDeck[pickCard(myDeck)];
+let pickedCard2 = pickCard(15)
+let pickedCard3 = pickCard('aaa') // error 类型“"aaa"”的参数不能赋给类型“number”的参数
+```
+
+重载的 `pickCard` 函数在调用的时候会进行正确的类型检查
