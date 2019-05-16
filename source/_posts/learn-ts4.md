@@ -1,5 +1,5 @@
 ---
-title: learn-ts4
+title: typescript学习(4) 函数
 date: 2019-05-12 21:30:33
 categories: [学习笔记, typescript]
 tags: [typescript]

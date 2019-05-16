@@ -1,5 +1,5 @@
 ---
-title: learn-ts3
+title: typescript学习(3) 类
 date: 2019-05-11 23:44:09
 categories: [学习笔记, typescript]
 tags: [typescript]
