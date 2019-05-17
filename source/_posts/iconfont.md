@@ -12,6 +12,8 @@ tags: [tips]
 ![img](http://img.xiaoz.site/20190508101232.png)
 ![img](http://img.xiaoz.site/20190508101248.png)
 
+<!-- more -->
+
 ## 2. 按需求在项目中用Unicode 或者 Font class 的方式引入即可
 
 ### (1) Unicode方式：

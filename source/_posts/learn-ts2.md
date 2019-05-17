@@ -29,6 +29,8 @@ let p1: Point = { x: 10, y: 20 }
 p1.x = 5 // error!
 ```
 
+<!-- more -->
+
 TypeScript 具有 ReadonlyArray<T> 类型，它与 Array<T> 相似，只是把所有可变方法去掉了，因此可以确保数组创建后再也不能被修改
 
 ```typescript

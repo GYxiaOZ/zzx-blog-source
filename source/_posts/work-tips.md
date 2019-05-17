@@ -27,6 +27,8 @@ a[disabled] {
 }
 ```
 
+<!-- more -->
+
 ### 防止在打印时出现链接地址
 
 ```less
@@ -460,4 +462,4 @@ s.doSomething = function(e) {
 - npx 从本地 node_modules/.bin 中执行命令
 - emma-cli 搜索方式安装包
 
-## 持续更新中...
+持续更新中...

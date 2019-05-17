@@ -23,6 +23,8 @@ class Animal {
 
 面向对象模式，基于类的程序设计中一种最基本的模式是允许使用继承来扩展现有的类
 
+<!-- more -->
+
 ```typescript
 class Animal {
   name: string
