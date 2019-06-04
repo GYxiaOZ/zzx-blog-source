@@ -54,6 +54,8 @@ ReactDOM.render(<Counter />, document.getElementById('root'));
 
 使用 React Hooks，我们可以这么写。
 
+<!-- more -->
+
 [示例](https://codepen.io/x-cold/pen/ZNEReY)
 ```jsx
 import React, { useState } from 'react';
