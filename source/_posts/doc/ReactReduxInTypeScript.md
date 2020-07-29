@@ -6,63 +6,76 @@ categories: [文档]
 tags: [typescript, react]
 ---
 
-xiaOz的翻译计划第一波！计划中，先慢慢来哈🤣，近期开始更新
+React & Redux 配合 TypeScript 使用指南，想翻译来着，今年年底前一定给他弄了💪
 
 <!--more-->
 
 <div align="center">
 
-## React & Redux in TypeScript - Static Typing Guide
+# React & Redux in TypeScript - Complete Guide
 
 _"This guide is a **living compendium** documenting the most important patterns and recipes on how to use **React** (and its Ecosystem) in a **functional style** using **TypeScript**. It will help you make your code **completely type-safe** while focusing on **inferring the types from implementation** so there is less noise coming from excessive type annotations and it's easier to write and maintain correct types in the long run."_
 
-[![Join the chat at https://gitter.im/react-redux-typescript-guide/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/react-redux-typescript-guide/Lobby)  
+[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/react-redux-ts)
+[![Join the chat at https://gitter.im/react-redux-typescript-guide/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/react-redux-typescript-guide/Lobby)
 
-:star: _Found it useful? Want more updates?_ [**Show your support by giving a :star:**](https://github.com/piotrwitek/react-redux-typescript-guide/stargazers)  
+_Found it useful? Want more updates?_
 
-:tada: _Now updated to support **TypeScript v3.4**_ :tada:
+[**Show your support by giving a :star:**](https://github.com/piotrwitek/react-redux-typescript-guide/stargazers)
 
-<a href="https://www.buymeacoffee.com/zh9guxbA5">
+<a href="https://www.buymeacoffee.com/piotrekwitek">
   <img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me a Coffee">
 </a>
 <a href="https://www.patreon.com/piotrekwitek">
   <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" alt="Become a Patron" width="160">
 </a>
 
+<br/><hr/>
+
+### **What's new?**
+
+:tada: _Now updated to support **TypeScript v3.7**_ :tada:
+:rocket: \_Updated to `typesafe-actions@5.x.x` :rocket:
+
+<hr/><br/>
+
 </div>
 
-**Goals**
+### **Goals**
 
 - Complete type safety (with [`--strict`](https://www.typescriptlang.org/docs/handbook/compiler-options.html) flag) without losing type information downstream through all the layers of our application (e.g. no type assertions or hacking with `any` type)
 - Make type annotations concise by eliminating redundancy in types using advanced TypeScript Language features like **Type Inference** and **Control flow analysis**
 - Reduce repetition and complexity of types with TypeScript focused [complementary libraries](#complementary-libraries)
 
-**React, Redux, Typescript Ecosystem**
+### **React, Redux, Typescript Ecosystem**
 
-- [typesafe-actions](https://github.com/piotrwitek/typesafe-actions) - Typesafe utilities for "action-creators" in Redux / Flux Architecture  
-- [utility-types](https://github.com/piotrwitek/utility-types) - Collection of generic types for TypeScript, complementing built-in mapped types and aliases - think lodash for reusable types.  
-- [react-redux-typescript-scripts](https://github.com/piotrwitek/react-redux-typescript-scripts) - dev-tools configuration files shared between projects based on this guide  
+- [typesafe-actions](https://github.com/piotrwitek/typesafe-actions) - Typesafe utilities for "action-creators" in Redux / Flux Architecture
+- [utility-types](https://github.com/piotrwitek/utility-types) - Collection of generic types for TypeScript, complementing built-in mapped types and aliases - think lodash for reusable types.
+- [react-redux-typescript-scripts](https://github.com/piotrwitek/react-redux-typescript-scripts) - dev-tools configuration files shared between projects based on this guide
 
-**Codesandbox links**
+### **Examples**
 
-- Reference Todo-App implementation using **React, Redux, Typescript Guide**: [Link](https://codesandbox.io/s/github/piotrwitek/typesafe-actions/tree/master/codesandbox)
+- Todo-App playground: [Codesandbox](https://codesandbox.io/s/github/piotrwitek/typesafe-actions/tree/master/codesandbox)
+- React, Redux, TypeScript - RealWorld App: [Github](https://github.com/piotrwitek/react-redux-typescript-realworld-app) | [Demo](https://react-redux-typescript-realworld-app.netlify.com/)
 
-**Playground Project**
+### **Playground Project**
 
 [![Build Status](https://semaphoreci.com/api/v1/piotrekwitek/react-redux-typescript-guide/branches/master/shields_badge.svg)](https://semaphoreci.com/piotrekwitek/react-redux-typescript-guide)
 
-You should check out Playground Project located in the `/playground` folder. It is a source of all the code examples found in the guide. They are all tested with the most recent version of TypeScript and 3rd party type-definitions (like `@types/react` or `@types/react-redux`) to ensure the examples are up-to-date and not broken with updated definitions. It's based on `create-react-app --typescript`.
+Check out our Playground Project located in the `/playground` folder. It contains all source files of the code examples found in the guide. They are all tested with the most recent version of TypeScript and 3rd party type-definitions (like `@types/react` or `@types/react-redux`) to ensure the examples are up-to-date and not broken with updated definitions (It's based on `create-react-app --typescript`).
+
 > Playground project was created so that you can simply clone the repository locally and immediately play around with all the component patterns found in the guide. It will help you to learn all the examples from this guide in a real project environment without the need to create complicated environment setup by yourself.
 
 ## Contributing Guide
-We are open for contributions. If you're planning to contribute please make sure to read the contributing guide: [CONTRIBUTING.md](/CONTRIBUTING.md)
+
+You can help make this project better by contributing. If you're planning to contribute please make sure to check our contributing guide: [CONTRIBUTING.md](/CONTRIBUTING.md)
 
 ## Funding
-This is an independent open-source project created by people investing their free time for the benefit of our community.
 
-If you are using it please consider donating as this will guarantee the project will be updated and maintained in the long run.
+You can also help by funding issues.
+Issues like bug fixes or feature requests can be very quickly resolved when funded through the IssueHunt platform.
 
-Issues can be funded by anyone interested in them being resolved. Reward will be transparently distributed to the contributor handling the task through the IssueHunt platform.
+I highly recommend to add a bounty to the issue that you're waiting for to increase priority and attract contributors willing to work on it.
 
 [![Let's fund issues in this repository](https://issuehunt.io/static/embed/issuehunt-button-v1.svg)](https://issuehunt.io/repos/76996763)
 
@@ -71,63 +84,102 @@ Issues can be funded by anyone interested in them being resolved. Reward will be
 🌟 - _New or updated section_
 
 ## Table of Contents
-- [Installation](#installation)
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 - [React - Type-Definitions Cheatsheet](#react---type-definitions-cheatsheet)
+  - [`React.FC<Props>` | `React.FunctionComponent<Props>`](#reactfcprops--reactfunctioncomponentprops)
+  - [`React.Component<Props, State>`](#reactcomponentprops-state)
+  - [`React.ComponentType<Props>`](#reactcomponenttypeprops)
+  - [`React.ComponentProps<typeof XXX>`](#reactcomponentpropstypeof-xxx)
+  - [`React.ReactElement` | `JSX.Element`](#reactreactelement--jsxelement)
+  - [`React.ReactNode`](#reactreactnode)
+  - [`React.CSSProperties`](#reactcssproperties)
+  - [`React.HTMLProps<HTMLXXXElement>`](#reacthtmlpropshtmlxxxelement)
+  - [`React.ReactEventHandler<HTMLXXXElement>`](#reactreacteventhandlerhtmlxxxelement)
+  - [`React.XXXEvent<HTMLXXXElement>`](#reactxxxeventhtmlxxxelement)
 - [React - Typing Patterns](#react---typing-patterns)
   - [Function Components - FC](#function-components---fc)
-  - [Class Components ](#class-components)
+    - [- Counter Component](#--counter-component)
+    - [- Spreading attributes in Component](#--spreading-attributes-in-component)
+  - [Class Components](#class-components)
+    - [- Class Counter Component](#--class-counter-component)
+    - [- Class Component with default props](#--class-component-with-default-props)
   - [Generic Components](#generic-components)
+    - [- Generic List Component](#--generic-list-component)
   - [Render Props](#render-props)
+    - [- Name Provider Component](#--name-provider-component)
+    - [- Mouse Provider Component](#--mouse-provider-component)
   - [Higher-Order Components](#higher-order-components)
+    - [- HOC wrapping a component](#--hoc-wrapping-a-component)
+    - [- HOC wrapping a component and injecting props](#--hoc-wrapping-a-component-and-injecting-props)
+    - [- Nested HOC - wrapping a component, injecting props and connecting to redux 🌟](#--nested-hoc---wrapping-a-component-injecting-props-and-connecting-to-redux-)
   - [Redux Connected Components](#redux-connected-components)
+    - [- Redux connected counter](#--redux-connected-counter)
+    - [- Redux connected counter with own props](#--redux-connected-counter-with-own-props)
+    - [- Redux connected counter with `redux-thunk` integration](#--redux-connected-counter-with-redux-thunk-integration)
   - [Context](#context)
-  - [Hooks](#hooks) 🌟
+    - [ThemeContext](#themecontext)
+    - [ThemeProvider](#themeprovider)
+    - [ThemeConsumer](#themeconsumer)
+    - [ThemeConsumer in class component](#themeconsumer-in-class-component)
+  - [Hooks](#hooks)
+    - [- useState](#--usestate)
+    - [- useReducer](#--usereducer)
+    - [- useContext](#--usecontext)
 - [Redux - Typing Patterns](#redux---typing-patterns)
   - [Store Configuration](#store-configuration)
-  - [Action Creators](#action-creators)
+    - [Create Global Store Types](#create-global-store-types)
+    - [Create Store](#create-store)
+  - [Action Creators 🌟](#action-creators-)
   - [Reducers](#reducers)
     - [State with Type-level Immutability](#state-with-type-level-immutability)
-    - [Typing regular reducer](#typing-regular-reducer)
-    - [Typing reducer with `typesafe-actions`](#typing-reducer-with-typesafe-actions) 🌟
+    - [Typing reducer](#typing-reducer)
+    - [Typing reducer with `typesafe-actions`](#typing-reducer-with-typesafe-actions)
     - [Testing reducer](#testing-reducer)
   - [Async Flow with `redux-observable`](#async-flow-with-redux-observable)
-    - [Typing Epics](#typing-epics)
-    - [Testing Epics](#testing-epics)
+    - [Typing epics](#typing-epics)
+    - [Testing epics](#testing-epics)
   - [Selectors with `reselect`](#selectors-with-reselect)
   - [Connect with `react-redux`](#connect-with-react-redux)
     - [Typing connected component](#typing-connected-component)
-    - [Typing connected component using `redux-thunk` action creators](#typing-connected-component-using-redux-thunk-action-creators) 🌟
+    - [Typing connected component with `redux-thunk` integration](#typing-connected-component-with-redux-thunk-integration)
 - [Configuration & Dev Tools](#configuration--dev-tools)
   - [Common Npm Scripts](#common-npm-scripts)
-  - [TypeScript](#typescript)
+  - [tsconfig.json](#tsconfigjson)
   - [TSLib](#tslib)
   - [TSLint](#tslint)
-  - [ESLint](#eslint) 🌟
+  - [ESLint](#eslint)
   - [Jest](#jest)
-  - [Style Guide](#style-guide)
+  - [Style Guides](#style-guides)
+    - ["react-styleguidist"](#react-styleguidist)
 - [Recipes](#recipes)
   - [General Tips](#general-tips)
   - [Ambient Modules Tips](#ambient-modules-tips)
   - [Type-Definitions Tips](#type-definitions-tips)
   - [Type Augmentation Tips](#type-augmentation-tips)
-- [Tutorials & Articles](#tutorials--articles)
-- [Contributors](#contributors)
+  - [Tutorials & Articles](#tutorials--articles)
+  - [Contributors](#contributors)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ---
 
 # Installation
 
 ### Type-Definitions for React & Redux
+
 ```
 npm i -D @types/react @types/react-dom @types/react-redux
 ```
 
 "react" - `@types/react`  
 "react-dom" - `@types/react-dom`  
-"redux" - (types included with npm package)*  
-"react-redux" - `@types/react-redux`  
+"redux" - (types included with npm package)\*  
+"react-redux" - `@types/react-redux`
 
-> *NB: Guide is based on types for Redux >= v4.x.x. To make it work with Redux v3.x.x please refer to [this config](https://github.com/piotrwitek/react-redux-typescript-guide/blob/master/playground/tsconfig.json#L5))  
+> \*NB: Guide is based on types for Redux >= v4.x.x. To make it work with Redux v3.x.x please refer to [this config](https://github.com/piotrwitek/react-redux-typescript-guide/blob/master/playground/tsconfig.json#L5))
 
 [⇧ back to top](#table-of-contents)
 
@@ -135,67 +187,97 @@ npm i -D @types/react @types/react-dom @types/react-redux
 
 # React - Type-Definitions Cheatsheet
 
-#### `React.FunctionComponent<P>` or `React.FC<P>`
+### `React.FC<Props>` | `React.FunctionComponent<Props>`
+
 Type representing a functional component
+
 ```tsx
 const MyComponent: React.FC<Props> = ...
 ```
 
-#### `React.Component<P, S>`
+### `React.Component<Props, State>`
+
 Type representing a class component
+
 ```tsx
 class MyComponent extends React.Component<Props, State> { ...
 ```
 
-#### `React.ComponentProps<typeof Component>`
-Gets type of Component Props, so you don't need to export Props from your component ever! (Works for both FC and Class components)
-```tsx
-type MyComponentProps = React.ComponentProps<typeof MyComponent>;
-```
+### `React.ComponentType<Props>`
 
-#### `React.ComponentType<P>`
-Type representing union type of (React.FC | React.Component)
+Type representing union of (React.FC<Props> | React.Component<Props>) - used in HOC
+
 ```tsx
 const withState = <P extends WrappedComponentProps>(
   WrappedComponent: React.ComponentType<P>,
 ) => { ...
 ```
 
-#### `React.ReactElement` or `JSX.Element`
+### `React.ComponentProps<typeof XXX>`
+
+Gets Props type of a specified component XXX (WARNING: does not work with statically declared default props and generic props)
+
+```tsx
+type MyComponentProps = React.ComponentProps<typeof MyComponent>;
+```
+
+### `React.ReactElement` | `JSX.Element`
+
 Type representing a concept of React Element - representation of a native DOM component (e.g. `<div />`), or a user-defined composite component (e.g. `<MyComponent />`)
+
 ```tsx
 const elementOnly: React.ReactElement = <div /> || <MyComponent />;
 ```
 
-#### `React.ReactNode`
+### `React.ReactNode`
+
 Type representing any possible type of React node (basically ReactElement (including Fragments and Portals) + primitive JS types)
+
 ```tsx
 const elementOrPrimitive: React.ReactNode = 'string' || 0 || false || null || undefined || <div /> || <MyComponent />;
 const Component = ({ children: React.ReactNode }) => ...
 ```
 
-#### `React.CSSProperties`
-Type representing style object in JSX (useful for css-in-js styles)
+### `React.CSSProperties`
+
+Type representing style object in JSX - for css-in-js styles
+
 ```tsx
 const styles: React.CSSProperties = { flexDirection: 'row', ...
 const element = <div style={styles} ...
 ```
 
-#### `React.ReactEventHandler<E>`
-Type representing generic event handler
+### `React.HTMLProps<HTMLXXXElement>`
+
+Type representing Props of specified HTML Element - for extending HTML Elements
+
 ```tsx
-const handleChange: React.ReactEventHandler<HTMLInputElement> = (ev) => { ... } 
+const Input: React.FC<Props & React.HTMLProps<HTMLInputElement>> = props => { ... }
+
+<Input about={...} accept={...} alt={...} ... />
+```
+
+### `React.ReactEventHandler<HTMLXXXElement>`
+
+Type representing generic event handler - for declaring event handlers
+
+```tsx
+const handleChange: React.ReactEventHandler<HTMLInputElement> = (ev) => { ... }
 
 <input onChange={handleChange} ... />
 ```
 
-#### `React.MouseEvent<E>` | `React.KeyboardEvent<E>` | `React.TouchEvent<E>` etc...
-Type representing more specific event handler
+### `React.XXXEvent<HTMLXXXElement>`
+
+Type representing more specific event. Some common event examples: `ChangeEvent, FormEvent, FocusEvent, KeyboardEvent, MouseEvent, DragEvent, PointerEvent, WheelEvent, TouchEvent`.
+
 ```tsx
 const handleChange = (ev: React.MouseEvent<HTMLDivElement>) => { ... }
 
 <div onMouseMove={handleChange} ... />
 ```
+
+In code above `React.MouseEvent<HTMLDivElement>` is type of mouse event, and this event happened on `HTMLDivElement`
 
 [⇧ back to top](#table-of-contents)
 
@@ -205,10 +287,10 @@ const handleChange = (ev: React.MouseEvent<HTMLDivElement>) => { ... }
 
 ## Function Components - FC
 
-#### - FC counter
+### - Counter Component
 
 ```tsx
-import * as React from 'react';
+import * as React from "react";
 
 type Props = {
   label: string;
@@ -216,7 +298,7 @@ type Props = {
   onIncrement: () => void;
 };
 
-export const FCCounter: React.FC<Props> = props => {
+export const FCCounter: React.FC<Props> = (props) => {
   const { label, count, onIncrement } = props;
 
   const handleIncrement = () => {
@@ -234,29 +316,27 @@ export const FCCounter: React.FC<Props> = props => {
     </div>
   );
 };
-
 ```
 
 [⟩⟩⟩ demo](https://piotrwitek.github.io/react-redux-typescript-guide/#fccounter)
 
 [⇧ back to top](#table-of-contents)
 
-#### - spread attributes [link](https://facebook.github.io/react/docs/jsx-in-depth.html#spread-attributes)
+### - [Spreading attributes](https://facebook.github.io/react/docs/jsx-in-depth.html#spread-attributes) in Component
 
 ```tsx
-import * as React from 'react';
+import * as React from "react";
 
 type Props = {
   className?: string;
   style?: React.CSSProperties;
 };
 
-export const FCSpreadAttributes: React.FC<Props> = props => {
+export const FCSpreadAttributes: React.FC<Props> = (props) => {
   const { children, ...restProps } = props;
 
   return <div {...restProps}>{children}</div>;
 };
-
 ```
 
 [⟩⟩⟩ demo](https://piotrwitek.github.io/react-redux-typescript-guide/#fcspreadattributes)
@@ -267,10 +347,10 @@ export const FCSpreadAttributes: React.FC<Props> = props => {
 
 ## Class Components
 
-#### - class counter
+### - Class Counter Component
 
 ```tsx
-import * as React from 'react';
+import * as React from "react";
 
 type Props = {
   label: string;
@@ -306,17 +386,16 @@ export class ClassCounter extends React.Component<Props, State> {
     );
   }
 }
-
 ```
 
 [⟩⟩⟩ demo](https://piotrwitek.github.io/react-redux-typescript-guide/#classcounter)
 
 [⇧ back to top](#table-of-contents)
 
-#### - with default props
+### - Class Component with default props
 
 ```tsx
-import * as React from 'react';
+import * as React from "react";
 
 type Props = {
   label: string;
@@ -339,12 +418,6 @@ export class ClassCounterWithDefaultProps extends React.Component<
     count: this.props.initialCount,
   };
 
-  componentWillReceiveProps({ initialCount }: Props) {
-    if (initialCount != null && initialCount !== this.props.initialCount) {
-      this.setState({ count: initialCount });
-    }
-  }
-
   handleIncrement = () => {
     this.setState({ count: this.state.count + 1 });
   };
@@ -366,7 +439,6 @@ export class ClassCounterWithDefaultProps extends React.Component<
     );
   }
 }
-
 ```
 
 [⟩⟩⟩ demo](https://piotrwitek.github.io/react-redux-typescript-guide/#classcounterwithdefaultprops)
@@ -376,13 +448,14 @@ export class ClassCounterWithDefaultProps extends React.Component<
 ---
 
 ## Generic Components
+
 - easily create typed component variations and reuse common logic
 - common use case is a generic list components
 
-#### - generic list
+### - Generic List Component
 
 ```tsx
-import * as React from 'react';
+import * as React from "react";
 
 export interface GenericListProps<T> {
   items: T[];
@@ -393,14 +466,9 @@ export class GenericList<T> extends React.Component<GenericListProps<T>, {}> {
   render() {
     const { items, itemRenderer } = this.props;
 
-    return (
-      <div>
-        {items.map(itemRenderer)}
-      </div>
-    );
+    return <div>{items.map(itemRenderer)}</div>;
   }
 }
-
 ```
 
 [⟩⟩⟩ demo](https://piotrwitek.github.io/react-redux-typescript-guide/#genericlist)
@@ -410,13 +478,15 @@ export class GenericList<T> extends React.Component<GenericListProps<T>, {}> {
 ---
 
 ## Render Props
+
 > https://reactjs.org/docs/render-props.html
 
-#### - name provider
+### - Name Provider Component
+
 > simple component using children as a render prop
 
 ```tsx
-import * as React from 'react';
+import * as React from "react";
 
 interface NameProviderProps {
   children: (state: NameProviderState) => React.ReactNode;
@@ -426,25 +496,28 @@ interface NameProviderState {
   readonly name: string;
 }
 
-export class NameProvider extends React.Component<NameProviderProps, NameProviderState> {
-  readonly state: NameProviderState = { name: 'Piotr' };
+export class NameProvider extends React.Component<
+  NameProviderProps,
+  NameProviderState
+> {
+  readonly state: NameProviderState = { name: "Piotr" };
 
   render() {
     return this.props.children(this.state);
   }
 }
-
 ```
 
 [⟩⟩⟩ demo](https://piotrwitek.github.io/react-redux-typescript-guide/#nameprovider)
 
 [⇧ back to top](#table-of-contents)
 
-#### - mouse provider
+### - Mouse Provider Component
+
 > `Mouse` component found in [Render Props React Docs](https://reactjs.org/docs/render-props.html#use-render-props-for-cross-cutting-concerns)
 
 ```tsx
-import * as React from 'react';
+import * as React from "react";
 
 export interface MouseProviderProps {
   render: (state: MouseProviderState) => React.ReactNode;
@@ -455,7 +528,10 @@ interface MouseProviderState {
   readonly y: number;
 }
 
-export class MouseProvider extends React.Component<MouseProviderProps, MouseProviderState> {
+export class MouseProvider extends React.Component<
+  MouseProviderProps,
+  MouseProviderState
+> {
   readonly state: MouseProviderState = { x: 0, y: 0 };
 
   handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -467,7 +543,7 @@ export class MouseProvider extends React.Component<MouseProviderProps, MouseProv
 
   render() {
     return (
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+      <div style={{ height: "100%" }} onMouseMove={this.handleMouseMove}>
         {/*
           Instead of providing a static representation of what <Mouse> renders,
           use the `render` prop to dynamically determine what to render.
@@ -477,7 +553,6 @@ export class MouseProvider extends React.Component<MouseProviderProps, MouseProv
     );
   }
 }
-
 ```
 
 [⟩⟩⟩ demo](https://piotrwitek.github.io/react-redux-typescript-guide/#mouseprovider)
@@ -487,28 +562,27 @@ export class MouseProvider extends React.Component<MouseProviderProps, MouseProv
 ---
 
 ## Higher-Order Components
+
 > https://reactjs.org/docs/higher-order-components.html
 
-#### - withState
+### - HOC wrapping a component
+
 Adds state to a stateless counter
 
 ```tsx
-import * as React from 'react';
-import { Subtract } from 'utility-types';
+import React from "react";
+import { Diff } from "utility-types";
 
-// These props will be subtracted from base component props
+// These props will be injected into the base component
 interface InjectedProps {
   count: number;
   onIncrement: () => void;
 }
 
 export const withState = <BaseProps extends InjectedProps>(
-  _BaseComponent: React.ComponentType<BaseProps>
+  BaseComponent: React.ComponentType<BaseProps>
 ) => {
-  // fix for TypeScript issues: https://github.com/piotrwitek/react-redux-typescript-guide/issues/111
-  const BaseComponent = _BaseComponent as React.ComponentType<InjectedProps>;
-
-  type HocProps = Subtract<BaseProps, InjectedProps> & {
+  type HocProps = Diff<BaseProps, InjectedProps> & {
     // here you can extend hoc with new props
     initialCount?: number;
   };
@@ -538,52 +612,44 @@ export const withState = <BaseProps extends InjectedProps>(
         <BaseComponent
           count={count} // injected
           onIncrement={this.handleIncrement} // injected
-          {...restProps}
+          {...(restProps as BaseProps)}
         />
       );
     }
   };
 };
-
 ```
+
 <details><summary><i>Click to expand</i></summary><p>
 
 ```tsx
-import * as React from 'react';
+import * as React from "react";
 
-import { withState } from '../hoc';
-import { FCCounter } from '../components';
+import { withState } from "../hoc";
+import { FCCounter } from "../components";
 
 const FCCounterWithState = withState(FCCounter);
 
-export default () => <FCCounterWithState label={'FCCounterWithState'} />;
-
+export default () => <FCCounterWithState label={"FCCounterWithState"} />;
 ```
+
 </p></details>
 
 [⇧ back to top](#table-of-contents)
 
-#### - withErrorBoundary
+### - HOC wrapping a component and injecting props
+
 Adds error handling using componentDidCatch to any component
 
 ```tsx
-import * as React from 'react';
-import { Subtract } from 'utility-types';
+import React from "react";
 
-const MISSING_ERROR = 'Error was swallowed during propagation.';
+const MISSING_ERROR = "Error was swallowed during propagation.";
 
-// These props will be subtracted from base component props
-interface InjectedProps {
-  onReset: () => void;
-}
-
-export const withErrorBoundary = <BaseProps extends InjectedProps>(
-  _BaseComponent: React.ComponentType<BaseProps>
+export const withErrorBoundary = <BaseProps extends {}>(
+  BaseComponent: React.ComponentType<BaseProps>
 ) => {
-  // fix for TypeScript issues: https://github.com/piotrwitek/react-redux-typescript-guide/issues/111
-  const BaseComponent = _BaseComponent as React.ComponentType<InjectedProps>;
-
-  type HocProps = Subtract<BaseProps, InjectedProps> & {
+  type HocProps = {
     // here you can extend hoc with new props
   };
   type HocState = {
@@ -609,47 +675,39 @@ export const withErrorBoundary = <BaseProps extends InjectedProps>(
       // TODO: send error report to service provider
     };
 
-    handleReset = () => {
-      this.setState({ error: undefined });
-    };
-
     render() {
       const { children, ...restProps } = this.props;
       const { error } = this.state;
 
       if (error) {
-        return (
-          <BaseComponent
-            onReset={this.handleReset} // injected
-            {...restProps}
-          />
-        );
+        return <BaseComponent {...(restProps as BaseProps)} />;
       }
 
       return children;
     }
   };
 };
-
 ```
+
 <details><summary><i>Click to expand</i></summary><p>
 
 ```tsx
-import React, {useState} from 'react';
+import React, { useState } from "react";
 
-import { withErrorBoundary } from '../hoc';
-import { ErrorMessage } from '../components';
+import { withErrorBoundary } from "../hoc";
+import { ErrorMessage } from "../components";
 
-const ErrorMessageWithErrorBoundary =
-  withErrorBoundary(ErrorMessage);
+const ErrorMessageWithErrorBoundary = withErrorBoundary(ErrorMessage);
 
 const BrokenComponent = () => {
-  throw new Error('I\'m broken! Don\'t render me.');
+  throw new Error("I'm broken! Don't render me.");
 };
 
 const BrokenButton = () => {
-  const [shouldRenderBrokenComponent, setShouldRenderBrokenComponent] =
-    useState(false);
+  const [
+    shouldRenderBrokenComponent,
+    setShouldRenderBrokenComponent,
+  ] = useState(false);
 
   if (shouldRenderBrokenComponent) {
     return <BrokenComponent />;
@@ -672,8 +730,94 @@ export default () => (
     <BrokenButton />
   </ErrorMessageWithErrorBoundary>
 );
-
 ```
+
+</p></details>
+
+[⇧ back to top](#table-of-contents)
+
+### - Nested HOC - wrapping a component, injecting props and connecting to redux 🌟
+
+Adds error handling using componentDidCatch to any component
+
+```tsx
+import { RootState } from "MyTypes";
+import React from "react";
+import { connect } from "react-redux";
+import { Diff } from "utility-types";
+import { countersActions, countersSelectors } from "../features/counters";
+
+// These props will be injected into the base component
+interface InjectedProps {
+  count: number;
+  onIncrement: () => void;
+}
+
+export const withConnectedCount = <BaseProps extends InjectedProps>(
+  BaseComponent: React.ComponentType<BaseProps>
+) => {
+  const mapStateToProps = (state: RootState) => ({
+    count: countersSelectors.getReduxCounter(state.counters),
+  });
+
+  const dispatchProps = {
+    onIncrement: countersActions.increment,
+  };
+
+  type HocProps = ReturnType<typeof mapStateToProps> &
+    typeof dispatchProps & {
+      // here you can extend ConnectedHoc with new props
+      overrideCount?: number;
+    };
+
+  class Hoc extends React.Component<HocProps> {
+    // Enhance component name for debugging and React-Dev-Tools
+    static displayName = `withConnectedCount(${BaseComponent.name})`;
+    // reference to original wrapped component
+    static readonly WrappedComponent = BaseComponent;
+
+    render() {
+      const { count, onIncrement, overrideCount, ...restProps } = this.props;
+
+      return (
+        <BaseComponent
+          count={overrideCount || count} // injected
+          onIncrement={onIncrement} // injected
+          {...(restProps as BaseProps)}
+        />
+      );
+    }
+  }
+
+  const ConnectedHoc = connect<
+    ReturnType<typeof mapStateToProps>,
+    typeof dispatchProps, // use "undefined" if NOT using dispatchProps
+    Diff<BaseProps, InjectedProps>,
+    RootState
+  >(
+    mapStateToProps,
+    dispatchProps
+  )(Hoc);
+
+  return ConnectedHoc;
+};
+```
+
+<details><summary><i>Click to expand</i></summary><p>
+
+```tsx
+import * as React from "react";
+
+import { withConnectedCount } from "../hoc";
+import { FCCounter } from "../components";
+
+const FCCounterWithConnectedCount = withConnectedCount(FCCounter);
+
+export default () => (
+  <FCCounterWithConnectedCount overrideCount={5} label={"FCCounterWithState"} />
+);
+```
+
 </p></details>
 
 [⇧ back to top](#table-of-contents)
@@ -682,14 +826,14 @@ export default () => (
 
 ## Redux Connected Components
 
-#### - redux connected counter
+### - Redux connected counter
 
 ```tsx
-import Types from 'MyTypes';
-import { connect } from 'react-redux';
+import Types from "MyTypes";
+import { connect } from "react-redux";
 
-import { countersActions, countersSelectors } from '../features/counters';
-import { FCCounter } from '../components';
+import { countersActions, countersSelectors } from "../features/counters";
+import { FCCounter } from "../components";
 
 const mapStateToProps = (state: Types.RootState) => ({
   count: countersSelectors.getReduxCounter(state.counters),
@@ -703,30 +847,30 @@ export const FCCounterConnected = connect(
   mapStateToProps,
   dispatchProps
 )(FCCounter);
-
 ```
+
 <details><summary><i>Click to expand</i></summary><p>
 
 ```tsx
-import * as React from 'react';
+import * as React from "react";
 
-import { FCCounterConnected } from '.';
+import { FCCounterConnected } from ".";
 
-export default () => <FCCounterConnected label={'FCCounterConnected'} />;
-
+export default () => <FCCounterConnected label={"FCCounterConnected"} />;
 ```
+
 </p></details>
 
 [⇧ back to top](#table-of-contents)
 
-#### - redux connected counter with own props
+### - Redux connected counter with own props
 
 ```tsx
-import Types from 'MyTypes';
-import { connect } from 'react-redux';
+import Types from "MyTypes";
+import { connect } from "react-redux";
 
-import { countersActions, countersSelectors } from '../features/counters';
-import { FCCounter } from '../components';
+import { countersActions, countersSelectors } from "../features/counters";
+import { FCCounter } from "../components";
 
 type OwnProps = {
   initialCount?: number;
@@ -746,36 +890,36 @@ export const FCCounterConnectedOwnProps = connect(
   mapStateToProps,
   dispatchProps
 )(FCCounter);
-
 ```
+
 <details><summary><i>Click to expand</i></summary><p>
 
 ```tsx
-import * as React from 'react';
+import * as React from "react";
 
-import { FCCounterConnectedOwnProps } from '.';
+import { FCCounterConnectedOwnProps } from ".";
 
 export default () => (
   <FCCounterConnectedOwnProps
-    label={'FCCounterConnectedOwnProps'}
+    label={"FCCounterConnectedOwnProps"}
     initialCount={10}
   />
 );
-
 ```
+
 </p></details>
 
 [⇧ back to top](#table-of-contents)
 
-#### - redux connected counter with `redux-thunk` integration
+### - Redux connected counter with `redux-thunk` integration
 
 ```tsx
-import Types from 'MyTypes';
-import { bindActionCreators, Dispatch } from 'redux';
-import { connect } from 'react-redux';
-import * as React from 'react';
+import Types from "MyTypes";
+import { bindActionCreators, Dispatch } from "redux";
+import { connect } from "react-redux";
+import * as React from "react";
 
-import { countersActions } from '../features/counters';
+import { countersActions } from "../features/counters";
 
 // Thunk Action
 const incrementWithDelay = () => async (dispatch: Dispatch): Promise<void> => {
@@ -799,7 +943,7 @@ type Props = ReturnType<typeof mapStateToProps> &
     label: string;
   };
 
-export const FCCounter: React.FC<Props> = props => {
+export const FCCounter: React.FC<Props> = (props) => {
   const { label, count, onIncrement } = props;
 
   const handleIncrement = () => {
@@ -825,22 +969,22 @@ export const FCCounterConnectedBindActionCreators = connect(
   mapStateToProps,
   mapDispatchToProps
 )(FCCounter);
-
 ```
+
 <details><summary><i>Click to expand</i></summary><p>
 
 ```tsx
-import * as React from 'react';
+import * as React from "react";
 
-import { FCCounterConnectedBindActionCreators } from '.';
+import { FCCounterConnectedBindActionCreators } from ".";
 
 export default () => (
   <FCCounterConnectedBindActionCreators
-    label={'FCCounterConnectedBindActionCreators'}
+    label={"FCCounterConnectedBindActionCreators"}
   />
 );
-
 ```
+
 </p></details>
 
 [⇧ back to top](#table-of-contents)
@@ -849,10 +993,10 @@ export default () => (
 
 > https://reactjs.org/docs/context.html
 
-#### ThemeContext
+### ThemeContext
 
 ```tsx
-import * as React from 'react';
+import * as React from "react";
 
 export type Theme = React.CSSProperties;
 
@@ -863,30 +1007,31 @@ type Themes = {
 
 export const themes: Themes = {
   dark: {
-    color: 'black',
-    backgroundColor: 'white',
+    color: "black",
+    backgroundColor: "white",
   },
   light: {
-    color: 'white',
-    backgroundColor: 'black',
+    color: "white",
+    backgroundColor: "black",
   },
 };
 
 export type ThemeContextProps = { theme: Theme; toggleTheme?: () => void };
-const ThemeContext = React.createContext<ThemeContextProps>({ theme: themes.light });
+const ThemeContext = React.createContext<ThemeContextProps>({
+  theme: themes.light,
+});
 
 export default ThemeContext;
-
 ```
 
 [⇧ back to top](#table-of-contents)
 
-#### ThemeProvider
+### ThemeProvider
 
 ```tsx
-import React from 'react';
-import ThemeContext, { themes, Theme } from './theme-context';
-import ToggleThemeButton from './theme-consumer';
+import React from "react";
+import ThemeContext, { themes, Theme } from "./theme-context";
+import ToggleThemeButton from "./theme-consumer";
 
 interface State {
   theme: Theme;
@@ -895,10 +1040,10 @@ export class ThemeProvider extends React.Component<{}, State> {
   readonly state: State = { theme: themes.light };
 
   toggleTheme = () => {
-    this.setState(state => ({
+    this.setState((state) => ({
       theme: state.theme === themes.light ? themes.dark : themes.light,
     }));
-  }
+  };
 
   render() {
     const { theme } = this.state;
@@ -910,34 +1055,34 @@ export class ThemeProvider extends React.Component<{}, State> {
     );
   }
 }
-
 ```
 
 [⇧ back to top](#table-of-contents)
 
-#### ThemeConsumer
+### ThemeConsumer
 
 ```tsx
-import * as React from 'react';
-import ThemeContext from './theme-context';
+import * as React from "react";
+import ThemeContext from "./theme-context";
 
 type Props = {};
 
 export default function ToggleThemeButton(props: Props) {
   return (
     <ThemeContext.Consumer>
-      {({ theme, toggleTheme }) => <button style={theme} onClick={toggleTheme} {...props} />}
+      {({ theme, toggleTheme }) => (
+        <button style={theme} onClick={toggleTheme} {...props} />
+      )}
     </ThemeContext.Consumer>
   );
 }
-
 ```
 
-#### ThemeConsumer in class component
+### ThemeConsumer in class component
 
 ```tsx
-import * as React from 'react';
-import ThemeContext from './theme-context';
+import * as React from "react";
+import ThemeContext from "./theme-context";
 
 type Props = {};
 
@@ -954,7 +1099,6 @@ export class ToggleThemeButtonClass extends React.Component<Props> {
     );
   }
 }
-
 ```
 
 [Implementation with Hooks](#--usecontext)
@@ -965,50 +1109,50 @@ export class ToggleThemeButtonClass extends React.Component<Props> {
 
 > https://reactjs.org/docs/hooks-intro.html
 
-#### - useState
+### - useState
 
 > https://reactjs.org/docs/hooks-reference.html#usestate
 
 ```tsx
-import * as React from 'react';
+import * as React from "react";
 
 type Props = { initialCount: number };
 
-export default function Counter({initialCount}: Props) {
+export default function Counter({ initialCount }: Props) {
   const [count, setCount] = React.useState(initialCount);
   return (
     <>
       Count: {count}
       <button onClick={() => setCount(initialCount)}>Reset</button>
-      <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
-      <button onClick={() => setCount(prevCount => prevCount - 1)}>-</button>
+      <button onClick={() => setCount((prevCount) => prevCount + 1)}>+</button>
+      <button onClick={() => setCount((prevCount) => prevCount - 1)}>-</button>
     </>
   );
 }
-
 ```
 
 [⇧ back to top](#table-of-contents)
 
-#### - useReducer
+### - useReducer
+
 Hook for state management like Redux in a function component.
 
 ```tsx
-import * as React from 'react';
+import * as React from "react";
 
 interface State {
   count: number;
 }
 
-type Action = { type: 'reset' } | { type: 'increment' } | { type: 'decrement' };
+type Action = { type: "reset" } | { type: "increment" } | { type: "decrement" };
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {
-    case 'increment':
+    case "increment":
       return { count: state.count + 1 };
-    case 'decrement':
+    case "decrement":
       return { count: state.count - 1 };
-    case 'reset':
+    case "reset":
       return { count: 0 };
     default:
       throw new Error();
@@ -1027,38 +1171,36 @@ function Counter({ initialCount }: CounterProps) {
   return (
     <>
       Count: {state.count}
-      <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
-      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
-      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+      <button onClick={() => dispatch({ type: "reset" })}>Reset</button>
+      <button onClick={() => dispatch({ type: "increment" })}>+</button>
+      <button onClick={() => dispatch({ type: "decrement" })}>-</button>
     </>
   );
 }
 
 export default Counter;
-
 ```
 
 [⇧ back to top](#table-of-contents)
 
-#### - useContext
+### - useContext
 
 > https://reactjs.org/docs/hooks-reference.html#usecontext
 
 ```tsx
-import * as React from 'react';
-import ThemeContext from '../context/theme-context';
+import * as React from "react";
+import ThemeContext from "../context/theme-context";
 
 type Props = {};
 
 export default function ThemeToggleButton(props: Props) {
   const { theme, toggleTheme } = React.useContext(ThemeContext);
   return (
-    <button onClick={toggleTheme} style={theme} >
+    <button onClick={toggleTheme} style={theme}>
       Toggle Theme
     </button>
   );
 }
-
 ```
 
 [⇧ back to top](#table-of-contents)
@@ -1069,29 +1211,32 @@ export default function ThemeToggleButton(props: Props) {
 
 ## Store Configuration
 
-### Create Global RootState and RootAction Types
+### Create Global Store Types
 
 #### `RootState` - type representing root state-tree
+
 Can be imported in connected components to provide type-safety to Redux `connect` function
 
 #### `RootAction` - type representing union type of all action objects
+
 Can be imported in various layers receiving or sending redux actions like: reducers, sagas or redux-observables epics
 
 ```tsx
-import { StateType, ActionType } from 'typesafe-actions';
+import { StateType, ActionType } from "typesafe-actions";
 
-declare module 'MyTypes' {
-  export type Store = StateType<typeof import('./index').default>;
-  export type RootAction = ActionType<typeof import('./root-action').default>;
-  export type RootState = StateType<typeof import('./root-reducer').default>;
+declare module "MyTypes" {
+  export type Store = StateType<typeof import("./index").default>;
+  export type RootAction = ActionType<typeof import("./root-action").default>;
+  export type RootState = StateType<
+    ReturnType<typeof import("./root-reducer").default>
+  >;
 }
 
-declare module 'typesafe-actions' {
+declare module "typesafe-actions" {
   interface Types {
-    RootAction: ActionType<typeof import('./root-action').default>;
+    RootAction: ActionType<typeof import("./root-action").default>;
   }
 }
-
 ```
 
 [⇧ back to top](#table-of-contents)
@@ -1099,17 +1244,23 @@ declare module 'typesafe-actions' {
 ### Create Store
 
 When creating a store instance we don't need to provide any additional types. It will set-up a **type-safe Store instance** using type inference.
+
 > The resulting store instance methods like `getState` or `dispatch` will be type checked and will expose all type errors
 
 ```tsx
-import { RootAction, RootState, Services } from 'MyTypes';
-import { createStore, applyMiddleware } from 'redux';
-import { createEpicMiddleware } from 'redux-observable';
+import { RootAction, RootState, Services } from "MyTypes";
+import { createStore, applyMiddleware } from "redux";
+import { createEpicMiddleware } from "redux-observable";
+import { createBrowserHistory } from "history";
+import { routerMiddleware as createRouterMiddleware } from "connected-react-router";
 
-import { composeEnhancers } from './utils';
-import rootReducer from './root-reducer';
-import rootEpic from './root-epic';
-import services from '../services';
+import { composeEnhancers } from "./utils";
+import rootReducer from "./root-reducer";
+import rootEpic from "./root-epic";
+import services from "../services";
+
+// browser history
+export const history = createBrowserHistory();
 
 export const epicMiddleware = createEpicMiddleware<
   RootAction,
@@ -1120,8 +1271,10 @@ export const epicMiddleware = createEpicMiddleware<
   dependencies: services,
 });
 
+const routerMiddleware = createRouterMiddleware(history);
+
 // configure middlewares
-const middlewares = [epicMiddleware];
+const middlewares = [epicMiddleware, routerMiddleware];
 // compose enhancers
 const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 
@@ -1129,66 +1282,69 @@ const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 const initialState = {};
 
 // create store
-const store = createStore(rootReducer, initialState, enhancer);
+const store = createStore(rootReducer(history), initialState, enhancer);
 
 epicMiddleware.run(rootEpic);
 
 // export store singleton instance
 export default store;
-
 ```
 
 ---
 
-## Action Creators
+## Action Creators 🌟
 
-> We'll be using a battle-tested library [![NPM Downloads](https://img.shields.io/npm/dm/typesafe-actions.svg)](https://www.npmjs.com/package/typesafe-actions)
- that'll help retain complete type soundness and simplify maintenace of **types in Redux Architectures** [`typesafe-actions`](https://github.com/piotrwitek/typesafe-actions#typesafe-actions)
+> We'll be using a battle-tested helper library [`typesafe-actions`](https://github.com/piotrwitek/typesafe-actions#typesafe-actions) [![Latest Stable Version](https://img.shields.io/npm/v/typesafe-actions.svg)](https://www.npmjs.com/package/typesafe-actions) [![NPM Downloads](https://img.shields.io/npm/dt/typesafe-actions.svg)](https://www.npmjs.com/package/typesafe-actions) that's designed to make it easy and fun working with **Redux** in **TypeScript**.
 
-> You can find more real-world examples and in-depth tutorial in: [Typesafe-Actions - Tutorial](https://github.com/piotrwitek/typesafe-actions#tutorial)!
+> To learn more please check this in-depth tutorial: [Typesafe-Actions - Tutorial](https://github.com/piotrwitek/typesafe-actions#tutorial)!
 
 A solution below is using a simple factory function to automate the creation of type-safe action creators. The goal is to decrease maintenance effort and reduce code repetition of type annotations for actions and creators. The result is completely typesafe action-creators and their actions.
 
 ```tsx
-import { action } from 'typesafe-actions';
+/* eslint-disable */
+import { action } from "typesafe-actions";
 
-import { ADD, INCREMENT } from './constants';
+import { ADD, INCREMENT } from "./constants";
 
-// CLASSIC API
+/* SIMPLE API */
+
 export const increment = () => action(INCREMENT);
 export const add = (amount: number) => action(ADD, amount);
 
-// ALTERNATIVE API - allow to use reference to "action-creator" function instead of "type constant"
-// e.g. case getType(increment): return { ... }
+/* ADVANCED API */
+
+// More flexible allowing to create complex actions more easily
+// use can use "action-creator" instance in place of "type constant"
+// e.g. case getType(increment): return action.payload;
 // This will allow to completely eliminate need for "constants" in your application, more info here:
-// https://github.com/piotrwitek/typesafe-actions#behold-the-mighty-tutorial
+// https://github.com/piotrwitek/typesafe-actions#constants
 
-// OPTION 1 (with generics):
-// import { createStandardAction } from 'typesafe-actions';
-// export const increment = createStandardAction(INCREMENT)<void>();
-// export const add = createStandardAction(ADD)<number>();
+import { createAction } from "typesafe-actions";
+import { Todo } from "../todos/models";
 
-// OPTION 2 (with resolve callback):
-// import { createAction } from 'typesafe-actions';
-// export const increment = createAction(INCREMENT);
-// export const add = createAction(ADD, resolve => {
-//   return (amount: number) => resolve(amount);
-// });
+export const emptyAction = createAction(INCREMENT)<void>();
+export const payloadAction = createAction(ADD)<number>();
+export const payloadMetaAction = createAction(ADD)<number, string>();
 
+export const payloadCreatorAction = createAction(
+  "TOGGLE_TODO",
+  (todo: Todo) => todo.id
+)<string>();
 ```
+
 <details><summary><i>Click to expand</i></summary><p>
 
 ```tsx
-import store from '../../store';
-import { countersActions as counter } from '../counters';
+import store from "../../store";
+import { countersActions as counter } from "../counters";
 
 // store.dispatch(counter.increment(1)); // Error: Expected 0 arguments, but got 1.
 store.dispatch(counter.increment()); // OK
 
 // store.dispatch(counter.add()); // Error: Expected 1 arguments, but got 0.
 store.dispatch(counter.add(1)); // OK
-
 ```
+
 </p></details>
 
 [⇧ back to top](#table-of-contents)
@@ -1198,7 +1354,9 @@ store.dispatch(counter.add(1)); // OK
 ## Reducers
 
 ### State with Type-level Immutability
+
 Declare reducer `State` type with `readonly` modifier to get compile time immutability
+
 ```ts
 export type State = {
   readonly counter: number;
@@ -1207,6 +1365,7 @@ export type State = {
 ```
 
 Readonly modifier allow initialization, but will not allow reassignment by highlighting compiler errors
+
 ```ts
 export const initialState: State = {
   counter: 0,
@@ -1216,22 +1375,26 @@ initialState.counter = 3; // TS Error: cannot be mutated
 ```
 
 It's great for **Arrays in JS** because it will error when using mutator methods like (`push`, `pop`, `splice`, ...), but it'll still allow immutable methods like (`concat`, `map`, `slice`,...).
+
 ```ts
-state.todos.push('Learn about tagged union types') // TS Error: Property 'push' does not exist on type 'ReadonlyArray<string>'
-const newTodos = state.todos.concat('Learn about tagged union types') // OK
+state.todos.push("Learn about tagged union types"); // TS Error: Property 'push' does not exist on type 'ReadonlyArray<string>'
+const newTodos = state.todos.concat("Learn about tagged union types"); // OK
 ```
 
 #### Caveat - `Readonly` is not recursive
+
 This means that the `readonly` modifier doesn't propagate immutability down the nested structure of objects. You'll need to mark each property on each level explicitly.
 
 > **TIP:** use `Readonly` or `ReadonlyArray` [Mapped types](https://www.typescriptlang.org/docs/handbook/advanced-types.html)
 
 ```ts
 export type State = Readonly<{
-  counterPairs: ReadonlyArray<Readonly<{
-    immutableCounter1: number,
-    immutableCounter2: number,
-  }>>,
+  counterPairs: ReadonlyArray<
+    Readonly<{
+      immutableCounter1: number;
+      immutableCounter2: number;
+    }>
+  >;
 }>;
 
 state.counterPairs[0] = { immutableCounter1: 1, immutableCounter2: 1 }; // TS Error: cannot be mutated
@@ -1244,20 +1407,19 @@ state.counterPairs[0].immutableCounter2 = 1; // TS Error: cannot be mutated
 To fix this we can use [`DeepReadonly`](https://github.com/piotrwitek/utility-types#deepreadonlyt) type (available from `utility-types`).
 
 ```ts
-import { DeepReadonly } from 'utility-types';
+import { DeepReadonly } from "utility-types";
 
 export type State = DeepReadonly<{
   containerObject: {
-    innerValue: number,
-    numbers: number[],
-  }
+    innerValue: number;
+    numbers: number[];
+  };
 }>;
 
 state.containerObject = { innerValue: 1 }; // TS Error: cannot be mutated
 state.containerObject.innerValue = 1; // TS Error: cannot be mutated
 state.containerObject.numbers.push(1); // TS Error: cannot use mutator methods
 ```
-
 
 [⇧ back to top](#table-of-contents)
 
@@ -1266,12 +1428,12 @@ state.containerObject.numbers.push(1); // TS Error: cannot use mutator methods
 > to understand following section make sure to learn about [Type Inference](https://www.typescriptlang.org/docs/handbook/type-inference.html), [Control flow analysis](https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript#control-flow-based-type-analysis) and [Tagged union types](https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript#tagged-union-types)
 
 ```tsx
-import { combineReducers } from 'redux';
-import { ActionType } from 'typesafe-actions';
+import { combineReducers } from "redux";
+import { ActionType } from "typesafe-actions";
 
-import { Todo, TodosFilter } from './models';
-import * as actions from './actions';
-import { ADD, CHANGE_FILTER, TOGGLE } from './constants';
+import { Todo, TodosFilter } from "./models";
+import * as actions from "./actions";
+import { ADD, CHANGE_FILTER, TOGGLE } from "./constants";
 
 export type TodosAction = ActionType<typeof actions>;
 
@@ -1291,7 +1453,7 @@ export default combineReducers<TodosState, TodosAction>({
         return [...state, action.payload];
 
       case TOGGLE:
-        return state.map(item =>
+        return state.map((item) =>
           item.id === action.payload
             ? { ...item, completed: !item.completed }
             : item
@@ -1311,20 +1473,20 @@ export default combineReducers<TodosState, TodosAction>({
     }
   },
 });
-
 ```
 
 [⇧ back to top](#table-of-contents)
 
 ### Typing reducer with `typesafe-actions`
+
 > Notice we are not required to use any generic type parameter in the API. Try to compare it with regular reducer as they are equivalent.
 
 ```tsx
-import { combineReducers } from 'redux';
-import { createReducer } from 'typesafe-actions';
+import { combineReducers } from "redux";
+import { createReducer } from "typesafe-actions";
 
-import { Todo, TodosFilter } from './models';
-import { ADD, CHANGE_FILTER, TOGGLE } from './constants';
+import { Todo, TodosFilter } from "./models";
+import { ADD, CHANGE_FILTER, TOGGLE } from "./constants";
 
 export type TodosState = Readonly<{
   todos: Todo[];
@@ -1336,16 +1498,16 @@ const initialState: TodosState = {
 };
 
 const todos = createReducer(initialState.todos)
-  .handleAction(ADD, (state, action) => [...state, action.payload])
-  .handleAction(TOGGLE, (state, action) =>
-    state.map(item =>
+  .handleType(ADD, (state, action) => [...state, action.payload])
+  .handleType(TOGGLE, (state, action) =>
+    state.map((item) =>
       item.id === action.payload
         ? { ...item, completed: !item.completed }
         : item
     )
   );
 
-const todosFilter = createReducer(initialState.todosFilter).handleAction(
+const todosFilter = createReducer(initialState.todosFilter).handleType(
   CHANGE_FILTER,
   (state, action) => action.payload
 );
@@ -1354,7 +1516,6 @@ export default combineReducers({
   todos,
   todosFilter,
 });
-
 ```
 
 [⇧ back to top](#table-of-contents)
@@ -1366,7 +1527,7 @@ import {
   todosReducer as reducer,
   todosActions as actions,
   TodosState,
-} from './';
+} from "./";
 
 /**
  * FIXTURES
@@ -1377,27 +1538,27 @@ const getInitialState = (initial?: Partial<TodosState>) =>
 /**
  * STORIES
  */
-describe('Todos Stories', () => {
-  describe('initial state', () => {
-    it('should match a snapshot', () => {
+describe("Todos Stories", () => {
+  describe("initial state", () => {
+    it("should match a snapshot", () => {
       const initialState = getInitialState();
       expect(initialState).toMatchSnapshot();
     });
   });
 
-  describe('adding todos', () => {
-    it('should add a new todo as the first element', () => {
+  describe("adding todos", () => {
+    it("should add a new todo as the first element", () => {
       const initialState = getInitialState();
       expect(initialState.todos).toHaveLength(0);
-      const state = reducer(initialState, actions.add('new todo'));
+      const state = reducer(initialState, actions.add("new todo"));
       expect(state.todos).toHaveLength(1);
-      expect(state.todos[0].title).toEqual('new todo');
+      expect(state.todos[0].title).toEqual("new todo");
     });
   });
 
-  describe('toggling completion state', () => {
-    it('should mark active todo as complete', () => {
-      const activeTodo = { id: '1', completed: false, title: 'active todo' };
+  describe("toggling completion state", () => {
+    it("should mark active todo as complete", () => {
+      const activeTodo = { id: "1", completed: false, title: "active todo" };
       const initialState = getInitialState({ todos: [activeTodo] });
       expect(initialState.todos[0].completed).toBeFalsy();
       const state1 = reducer(initialState, actions.toggle(activeTodo.id));
@@ -1405,7 +1566,6 @@ describe('Todos Stories', () => {
     });
   });
 });
-
 ```
 
 [⇧ back to top](#table-of-contents)
@@ -1417,12 +1577,12 @@ describe('Todos Stories', () => {
 ### Typing epics
 
 ```tsx
-import { RootAction, RootState, Services } from 'MyTypes';
-import { Epic } from 'redux-observable';
-import { tap, ignoreElements, filter } from 'rxjs/operators';
-import { isOfType } from 'typesafe-actions';
+import { RootAction, RootState, Services } from "MyTypes";
+import { Epic } from "redux-observable";
+import { tap, ignoreElements, filter } from "rxjs/operators";
+import { isOfType } from "typesafe-actions";
 
-import { todosConstants } from '../todos';
+import { todosConstants } from "../todos";
 
 // contrived example!!!
 export const logAddAction: Epic<RootAction, RootAction, RootState, Services> = (
@@ -1432,14 +1592,13 @@ export const logAddAction: Epic<RootAction, RootAction, RootState, Services> = (
 ) =>
   action$.pipe(
     filter(isOfType(todosConstants.ADD)), // action is narrowed to: { type: "ADD_TODO"; payload: string; }
-    tap(action => {
+    tap((action) => {
       logger.log(
         `action type must be equal: ${todosConstants.ADD} === ${action.type}`
       );
     }),
     ignoreElements()
   );
-
 ```
 
 [⇧ back to top](#table-of-contents)
@@ -1447,26 +1606,26 @@ export const logAddAction: Epic<RootAction, RootAction, RootState, Services> = (
 ### Testing epics
 
 ```tsx
-import { StateObservable, ActionsObservable } from 'redux-observable';
-import { RootState, Services, RootAction } from 'MyTypes';
-import { Subject } from 'rxjs';
+import { StateObservable, ActionsObservable } from "redux-observable";
+import { RootState, Services, RootAction } from "MyTypes";
+import { Subject } from "rxjs";
 
-import { add } from './actions';
-import { logAddAction } from './epics';
+import { add } from "./actions";
+import { logAddAction } from "./epics";
 
 // Simple typesafe mock of all the services, you dont't need to mock anything else
 // It is decoupled and reusable for all your tests, just put it in a separate file
 const services = {
   logger: {
-    log: jest.fn<Services['logger']['log']>(),
+    log: jest.fn<Services["logger"]["log"]>(),
   },
   localStorage: {
-    loadState: jest.fn<Services['localStorage']['loadState']>(),
-    saveState: jest.fn<Services['localStorage']['saveState']>(),
+    loadState: jest.fn<Services["localStorage"]["loadState"]>(),
+    saveState: jest.fn<Services["localStorage"]["saveState"]>(),
   },
 };
 
-describe('Todos Epics', () => {
+describe("Todos Epics", () => {
   let state$: StateObservable<RootState>;
 
   beforeEach(() => {
@@ -1476,13 +1635,13 @@ describe('Todos Epics', () => {
     );
   });
 
-  describe('logging todos actions', () => {
+  describe("logging todos actions", () => {
     beforeEach(() => {
       services.logger.log.mockClear();
     });
 
-    it('should call the logger service when adding a new todo', done => {
-      const addTodoAction = add('new todo');
+    it("should call the logger service when adding a new todo", (done) => {
+      const addTodoAction = add("new todo");
       const action$ = ActionsObservable.of(addTodoAction);
 
       logAddAction(action$, state$, services)
@@ -1490,7 +1649,7 @@ describe('Todos Epics', () => {
         .then((outputAction: RootAction) => {
           expect(services.logger.log).toHaveBeenCalledTimes(1);
           expect(services.logger.log).toHaveBeenCalledWith(
-            'action type must be equal: todos/ADD === todos/ADD'
+            "action type must be equal: todos/ADD === todos/ADD"
           );
           // expect output undefined because we're using "ignoreElements" in epic
           expect(outputAction).toEqual(undefined);
@@ -1499,7 +1658,6 @@ describe('Todos Epics', () => {
     });
   });
 });
-
 ```
 
 [⇧ back to top](#table-of-contents)
@@ -1509,26 +1667,29 @@ describe('Todos Epics', () => {
 ## Selectors with `reselect`
 
 ```tsx
-import { createSelector } from 'reselect';
+import { createSelector } from "reselect";
 
-import { TodosState } from './reducer';
+import { TodosState } from "./reducer";
 
 export const getTodos = (state: TodosState) => state.todos;
 
 export const getTodosFilter = (state: TodosState) => state.todosFilter;
 
-export const getFilteredTodos = createSelector(getTodos, getTodosFilter, (todos, todosFilter) => {
-  switch (todosFilter) {
-    case 'completed':
-      return todos.filter(t => t.completed);
-    case 'active':
-      return todos.filter(t => !t.completed);
+export const getFilteredTodos = createSelector(
+  getTodos,
+  getTodosFilter,
+  (todos, todosFilter) => {
+    switch (todosFilter) {
+      case "completed":
+        return todos.filter((t) => t.completed);
+      case "active":
+        return todos.filter((t) => !t.completed);
 
-    default:
-      return todos;
+      default:
+        return todos;
+    }
   }
-});
-
+);
 ```
 
 [⇧ back to top](#table-of-contents)
@@ -1539,62 +1700,72 @@ export const getFilteredTodos = createSelector(getTodos, getTodosFilter, (todos,
 
 ### Typing connected component
 
-*__NOTE__: Below you'll find only a short explanation of concepts behind typing `connect`. For more real-world examples please check [Redux Connected Components](#redux-connected-components) section.*
+_**NOTE**: Below you'll find only a short explanation of concepts behind typing `connect`. For more real-world examples please check [Redux Connected Components](#redux-connected-components) section._
 
 ```tsx
-import MyTypes from 'MyTypes';
+import MyTypes from "MyTypes";
 
-import { bindActionCreators, Dispatch, ActionCreatorsMapObject } from 'redux';
-import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch, ActionCreatorsMapObject } from "redux";
+import { connect } from "react-redux";
 
-import { countersActions } from '../features/counters';
-import { FCCounter } from '../components';
+import { countersActions } from "../features/counters";
+import { FCCounter } from "../components";
 
-// Type annotation for "state" argument is mandatory to check 
+// Type annotation for "state" argument is mandatory to check
 // the correct shape of state object and injected props you can also
 // extend connected component Props interface by annotating `ownProps` argument
-const mapStateToProps = (state: MyTypes.RootState, ownProps: FCCounterProps) => ({
+const mapStateToProps = (
+  state: MyTypes.RootState,
+  ownProps: FCCounterProps
+) => ({
   count: state.counters.reduxCounter,
 });
 
 // "dispatch" argument needs an annotation to check the correct shape
 //  of an action object when using dispatch function
 const mapDispatchToProps = (dispatch: Dispatch<MyTypes.RootAction>) =>
-  bindActionCreators({
-    onIncrement: countersActions.increment,
-  }, dispatch);
+  bindActionCreators(
+    {
+      onIncrement: countersActions.increment,
+    },
+    dispatch
+  );
 
 // shorter alternative is to use an object instead of mapDispatchToProps function
 const dispatchToProps = {
-    onIncrement: countersActions.increment,
+  onIncrement: countersActions.increment,
 };
 
 // Notice we don't need to pass any generic type parameters to neither
 // the connect function below nor map functions declared above
 // because type inference will infer types from arguments annotations automatically
 // This is much cleaner and idiomatic approach
-export const FCCounterConnected =
-  connect(mapStateToProps, mapDispatchToProps)(FCCounter);
+export const FCCounterConnected = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FCCounter);
 
 // You can add extra layer of validation of your action creators
 // by using bindActionCreators generic type parameter and RootAction type
 const mapDispatchToProps = (dispatch: Dispatch<MyTypes.RootAction>) =>
-  bindActionCreators<ActionCreatorsMapObject<Types.RootAction>>({
-    invalidActionCreator: () => 1, // Error: Type 'number' is not assignable to type '{ type: "todos/ADD"; payload: Todo; } | { ... }
-  }, dispatch);
-
+  bindActionCreators<ActionCreatorsMapObject<Types.RootAction>>(
+    {
+      invalidActionCreator: () => 1, // Error: Type 'number' is not assignable to type '{ type: "todos/ADD"; payload: Todo; } | { ... }
+    },
+    dispatch
+  );
 ```
 
-### Typing connected component using `redux-thunk` action creators
+### Typing connected component with `redux-thunk` integration
 
-*__NOTE__: When using thunk action creators you need to use `bindActionCreators`. Only this way you can get corrected dispatch props type signature like below.*
+_**NOTE**: When using thunk action creators you need to use `bindActionCreators`. Only this way you can get corrected dispatch props type signature like below._
 
-*__WARNING__: As of now (Apr 2019) `bindActionCreators` signature of the latest `redux-thunk` release will not work as below, you need to use updated type definitions that you can find here [`/playground/typings/redux-thunk/index.d.ts`](./playground/typings/redux-thunk/index.d.ts) and then add `paths` overload in your tsconfig like this: [`"paths":{"redux-thunk":["typings/redux-thunk"]}`](./playground/tsconfig.json).*
+_**WARNING**: As of now (Apr 2019) `bindActionCreators` signature of the latest `redux-thunk` release will not work as below, you need to use updated type definitions that you can find here [`/playground/typings/redux-thunk/index.d.ts`](./playground/typings/redux-thunk/index.d.ts) and then add `paths` overload in your tsconfig like this: [`"paths":{"redux-thunk":["typings/redux-thunk"]}`](./playground/tsconfig.json)._
 
 ```tsx
 const thunkAsyncAction = () => async (dispatch: Dispatch): Promise<void> => {
   // dispatch actions, return Promise, etc.
-}
+};
 
 const mapDispatchToProps = (dispatch: Dispatch<Types.RootAction>) =>
   bindActionCreators(
@@ -1618,7 +1789,9 @@ type DispatchProps = ReturnType<typeof mapDispatchToProps>;
 # Configuration & Dev Tools
 
 ## Common Npm Scripts
+
 > Common TS-related npm scripts shared across projects
+
 ```
 "prettier": "prettier --list-different 'src/**/*.ts' || (echo '\nPlease fix code formatting by running:\nnpm run prettier:fix\n'; exit 1)",
 "prettier:fix": "prettier --write 'src/**/*.ts'",
@@ -1633,11 +1806,10 @@ type DispatchProps = ReturnType<typeof mapDispatchToProps>;
 
 [⇧ back to top](#table-of-contents)
 
-### TypeScript
+## tsconfig.json
 
 We have our own recommended `tsconfig.json` that you can easily add to your project thanks to [`react-redux-typescript-scripts`](https://github.com/piotrwitek/react-redux-typescript-scripts) package.
 
-#### tsconfig.json
 <details><summary><i>Click to expand</i></summary><p>
 
 ```tsx
@@ -1654,19 +1826,22 @@ We have our own recommended `tsconfig.json` that you can easily add to your proj
 }
 
 ```
+
 </p></details>
 
 [⇧ back to top](#table-of-contents)
 
 ## TSLib
+
 https://www.npmjs.com/package/tslib
 
 This library will cut down on your bundle size, thanks to using external runtime helpers instead of adding them per each file.
 
 > Installation  
-`npm i tslib`
+> `npm i tslib`
 
 Then add this to your `tsconfig.json`:
+
 ```ts
 "compilerOptions": {
   "importHelpers": true
@@ -1676,23 +1851,25 @@ Then add this to your `tsconfig.json`:
 [⇧ back to top](#table-of-contents)
 
 ## TSLint
+
 https://palantir.github.io/tslint/
 
 > Installation  
-`npm i -D tslint`
+> `npm i -D tslint`
 
-> For React project you should add additional `react` specific rules: `npm i -D tslint-react` https://github.com/palantir/tslint-react  
+> For React project you should add additional `react` specific rules: `npm i -D tslint-react` https://github.com/palantir/tslint-react
 
 We have our own recommended config that you can easily add to your project thanks to [`react-redux-typescript-scripts`](https://github.com/piotrwitek/react-redux-typescript-scripts) package.
 
 #### tslint.json
+
 <details><summary><i>Click to expand</i></summary><p>
 
 ```tsx
 {
   "extends": [
-    "react-redux-typescript-scripts/tslint.json",
-    "react-redux-typescript-scripts/tslint-react.json"
+    "./node_modules/react-redux-typescript-scripts/tslint.json",
+    "./node_modules/react-redux-typescript-scripts/tslint-react.json"
   ],
   "rules": {
     // you can further customize options here
@@ -1700,20 +1877,23 @@ We have our own recommended config that you can easily add to your project thank
 }
 
 ```
+
 </p></details>
 
 [⇧ back to top](#table-of-contents)
 
 ## ESLint
+
 https://eslint.org/  
 https://typescript-eslint.io
 
 > Installation  
-`npm i -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin`
+> `npm i -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin`
 
 We have our own recommended config that will automatically add a parser & plugin for TypeScript thanks to [`react-redux-typescript-scripts`](https://github.com/piotrwitek/react-redux-typescript-scripts) package.
 
 #### .eslintrc
+
 <details><summary><i>Click to expand</i></summary><p>
 
 ```tsx
@@ -1728,17 +1908,20 @@ We have our own recommended config that will automatically add a parser & plugin
 }
 
 ```
+
 </p></details>
 
 [⇧ back to top](#table-of-contents)
 
 ## Jest
+
 https://jestjs.io/
 
 > Installation  
-`npm i -D jest ts-jest @types/jest`
+> `npm i -D jest ts-jest @types/jest`
 
 #### jest.config.json
+
 <details><summary><i>Click to expand</i></summary><p>
 
 ```tsx
@@ -1763,41 +1946,46 @@ https://jestjs.io/
 }
 
 ```
+
 </p></details>
 
 #### jest.stubs.js
+
 <details><summary><i>Click to expand</i></summary><p>
 
 ```tsx
 // Global/Window object Stubs for Jest
-window.matchMedia = window.matchMedia || function () {
-  return {
-    matches: false,
-    addListener: function () { },
-    removeListener: function () { },
+window.matchMedia =
+  window.matchMedia ||
+  function() {
+    return {
+      matches: false,
+      addListener: function() {},
+      removeListener: function() {},
+    };
   };
-};
 
-window.requestAnimationFrame = function (callback) {
+window.requestAnimationFrame = function(callback) {
   setTimeout(callback);
 };
 
 window.localStorage = {
-  getItem: function () { },
-  setItem: function () { },
+  getItem: function() {},
+  setItem: function() {},
 };
 
 Object.values = () => [];
-
 ```
+
 </p></details>
 
 [⇧ back to top](#table-of-contents)
 
-## Style Guide
+## Style Guides
+
 ### ["react-styleguidist"](https://github.com/styleguidist/react-styleguidist)
 
-[⟩⟩⟩ styleguide.config.js](/playground/styleguide.config.js)  
+[⟩⟩⟩ styleguide.config.js](/playground/styleguide.config.js)
 
 [⟩⟩⟩ demo](https://piotrwitek.github.io/react-redux-typescript-guide/)
 
@@ -1810,18 +1998,21 @@ Object.values = () => [];
 ### General Tips
 
 #### - should I still use React.PropTypes in TS?
-No. With TypeScript, using PropTypes is an unnecessary overhead. When declaring Props and State interfaces, you will get complete intellisense and design-time safety with static type checking. This way you'll be safe from runtime errors and you will save a lot of time on debugging. Additional benefit is an elegant and standardized method of documenting your component public API in the source code.  
+
+No. With TypeScript, using PropTypes is an unnecessary overhead. When declaring Props and State interfaces, you will get complete intellisense and design-time safety with static type checking. This way you'll be safe from runtime errors and you will save a lot of time on debugging. Additional benefit is an elegant and standardized method of documenting your component public API in the source code.
 
 [⇧ back to top](#table-of-contents)
 
 #### - when to use `interface` declarations and when `type` aliases?
+
 From practical side, using `interface` declaration will create an identity (interface name) in compiler errors, on the contrary `type` aliases doesn't create an identity and will be unwinded to show all the properties and nested types it consists of.  
 Although I prefer to use `type` most of the time there are some places this can become too noisy when reading compiler errors and that's why I like to leverage this distinction to hide some of not so important type details in errors using interfaces identity.
-Related `ts-lint` rule: https://palantir.github.io/tslint/rules/interface-over-type-literal/  
+Related `ts-lint` rule: https://palantir.github.io/tslint/rules/interface-over-type-literal/
 
 [⇧ back to top](#table-of-contents)
 
 #### - what's better default or named exports?
+
 A common flexible solution is to use module folder pattern, because you can leverage both named and default import when you see fit.  
 With this solution you'll achieve better encapsulation and be able to safely refactor internal naming and folders structure without breaking your consumer code:
 
@@ -1851,7 +2042,9 @@ import Select from '@src/components/select';
 [⇧ back to top](#table-of-contents)
 
 #### - how to best initialize class instance or static properties?
-Prefered modern syntax is to use class Property Initializers  
+
+Prefered modern syntax is to use class Property Initializers
+
 ```tsx
 class ClassCounterWithInitialCount extends React.Component<Props, State> {
   // default props using Property Initializers
@@ -1859,7 +2052,7 @@ class ClassCounterWithInitialCount extends React.Component<Props, State> {
     className: 'default-class',
     initialCount: 0,
   };
-  
+
   // initial state using Property Initializers
   state: State = {
     count: this.props.initialCount,
@@ -1871,7 +2064,9 @@ class ClassCounterWithInitialCount extends React.Component<Props, State> {
 [⇧ back to top](#table-of-contents)
 
 #### - how to best declare component handler functions?
-Prefered modern syntax is to use Class Fields with arrow functions  
+
+Prefered modern syntax is to use Class Fields with arrow functions
+
 ```tsx
 class ClassCounter extends React.Component<Props, State> {
 // handlers using Class Fields with arrow functions
@@ -1887,19 +2082,21 @@ class ClassCounter extends React.Component<Props, State> {
 ### Ambient Modules Tips
 
 #### Imports in ambient modules
-For type augmentation imports should stay outside of module declaration.
-```ts
-import { Operator } from 'rxjs/Operator';
-import { Observable } from 'rxjs/Observable';
 
-declare module 'rxjs/Subject' {
+For type augmentation imports should stay outside of module declaration.
+
+```ts
+import { Operator } from "rxjs/Operator";
+import { Observable } from "rxjs/Observable";
+
+declare module "rxjs/Subject" {
   interface Subject<T> {
     lift<R>(operator: Operator<T, R>): Observable<R>;
   }
 }
 ```
 
-When creating 3rd party type-definitions all the imports should be kept inside the module decleration, otherwise it will be treated as augmentation and show error
+When creating 3rd party type-definitions all the imports should be kept inside the module declaration, otherwise it will be treated as augmentation and show error
 
 ```ts
 declare module "react-custom-scrollbars" {
@@ -1913,16 +2110,17 @@ declare module "react-custom-scrollbars" {
 ### Type-Definitions Tips
 
 #### Missing type-definitions error
+
 if you cannot find types for a third-party module you can provide your own types or disable type-checking for this module using [Shorthand Ambient Modules](https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Modules.md#shorthand-ambient-modules)
 
 ```tsx
 // typings/modules.d.ts
-declare module 'MyTypes';
-declare module 'react-test-renderer';
-
+declare module "MyTypes";
+declare module "react-test-renderer";
 ```
 
 #### Using custom `d.ts` files for npm modules
+
 If you want to use an alternative (customized) type-definitions for some npm module (that usually comes with it's own type-definitions), you can do it by adding an override in `paths` compiler option.
 
 ```ts
@@ -1941,13 +2139,14 @@ If you want to use an alternative (customized) type-definitions for some npm mod
 [⇧ back to top](#table-of-contents)
 
 ### Type Augmentation Tips
-Strategies to fix issues coming from external type-definitions files (*.d.ts)
+
+Strategies to fix issues coming from external type-definitions files (\*.d.ts)
 
 #### Augmenting library internal declarations - using relative import
 
 ```ts
 // added missing autoFocus Prop on Input component in "antd@2.10.0" npm package
-declare module '../node_modules/antd/lib/input/Input' {
+declare module "../node_modules/antd/lib/input/Input" {
   export interface InputProps {
     autoFocus?: boolean;
   }
@@ -1958,10 +2157,10 @@ declare module '../node_modules/antd/lib/input/Input' {
 
 ```ts
 // fixed broken public type-definitions in "rxjs@5.4.1" npm package
-import { Operator } from 'rxjs/Operator';
-import { Observable } from 'rxjs/Observable';
+import { Operator } from "rxjs/Operator";
+import { Observable } from "rxjs/Observable";
 
-declare module 'rxjs/Subject' {
+declare module "rxjs/Subject" {
   interface Subject<T> {
     lift<R>(operator: Operator<T, R>): Observable<R>;
   }
@@ -1975,15 +2174,16 @@ declare module 'rxjs/Subject' {
 ---
 
 ## Tutorials & Articles
+
 > Curated list of relevant in-depth tutorials
 
 Higher-Order Components:
+
 - https://medium.com/@jrwebdev/react-higher-order-component-patterns-in-typescript-42278f7590fb
 
 [⇧ back to top](#table-of-contents)
 
 ---
-
 
 ## Contributors
 
@@ -1995,6 +2195,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | [<img src="https://avatars1.githubusercontent.com/u/119451?v=4" width="100px;"/><br /><sub><b>Jakub Chodorowicz</b></sub>](http://www.jakub.chodorowicz.pl/)<br />[💻](https://github.com/piotrwitek/react-redux-typescript-guide/commits?author=chodorowicz "Code") | [<img src="https://avatars1.githubusercontent.com/u/7266431?v=4" width="100px;"/><br /><sub><b>Oleg Maslov</b></sub>](https://github.com/mleg)<br />[🐛](https://github.com/piotrwitek/react-redux-typescript-guide/issues?q=author%3Amleg "Bug reports") | [<img src="https://avatars0.githubusercontent.com/u/3393293?v=4" width="100px;"/><br /><sub><b>Aaron Westbrook</b></sub>](https://github.com/awestbro)<br />[🐛](https://github.com/piotrwitek/react-redux-typescript-guide/issues?q=author%3Aawestbro "Bug reports") | [<img src="https://avatars3.githubusercontent.com/u/14539?v=4" width="100px;"/><br /><sub><b>Peter Blazejewicz</b></sub>](http://www.linkedin.com/in/peterblazejewicz)<br />[📖](https://github.com/piotrwitek/react-redux-typescript-guide/commits?author=peterblazejewicz "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/1642?v=4" width="100px;"/><br /><sub><b>Solomon White</b></sub>](https://github.com/rubysolo)<br />[📖](https://github.com/piotrwitek/react-redux-typescript-guide/commits?author=rubysolo "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/8838006?v=4" width="100px;"/><br /><sub><b>Levi Rocha</b></sub>](https://github.com/pino)<br />[📖](https://github.com/piotrwitek/react-redux-typescript-guide/commits?author=pino "Documentation") | [<img src="https://avatars1.githubusercontent.com/u/41281835?v=4" width="100px;"/><br /><sub><b>Sudachi-kun</b></sub>](http://cloudnative.co.jp)<br />[💵](#financial-loadbalance-sudachi-kun "Financial") |
 | [<img src="https://avatars1.githubusercontent.com/u/14838850?v=4" width="100px;"/><br /><sub><b>Sosuke Suzuki</b></sub>](http://sosukesuzuki.github.io)<br />[💻](https://github.com/piotrwitek/react-redux-typescript-guide/commits?author=sosukesuzuki "Code") | [<img src="https://avatars0.githubusercontent.com/u/74433?v=4" width="100px;"/><br /><sub><b>Tom Rathbone</b></sub>](https://github.com/chillitom)<br />[📖](https://github.com/piotrwitek/react-redux-typescript-guide/commits?author=chillitom "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/4654382?v=4" width="100px;"/><br /><sub><b>Arshad Kazmi</b></sub>](https://arshadkazmi42.github.io/)<br />[📖](https://github.com/piotrwitek/react-redux-typescript-guide/commits?author=arshadkazmi42 "Documentation") | [<img src="https://avatars1.githubusercontent.com/u/8815362?v=4" width="100px;"/><br /><sub><b>JeongUkJae</b></sub>](https://jeongukjae.github.io)<br />[📖](https://github.com/piotrwitek/react-redux-typescript-guide/commits?author=JeongUkJae "Documentation") |
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
