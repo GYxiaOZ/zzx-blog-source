@@ -55,21 +55,46 @@ a[disabled] {
 
 ```javascript
 window.opener = null;
-window.open('', '_self', '');
+window.open("", "_self", "");
 window.close();
 ```
 
 ### 点击下载
 
 ```javascript
+// 方法一
 var downloadFile = function(fileName, filePath) {
   var form = $("<form style='display:none'></form>");
-  form.appendTo('body');
+  form.appendTo("body");
   form
-    .attr('action', '${devhost}/fd0.action?filePath=' + filePath + '&fileName=' + fileName)
-    .attr('method', 'POST');
+    .attr(
+      "action",
+      "${devhost}/fd0.action?filePath=" + filePath + "&fileName=" + fileName
+    )
+    .attr("method", "POST");
   form.submit();
 };
+
+// 方法二
+var iframe = $("<iframe style='display:none;'></iframe>");
+iframe.attr("src", action + "?" + $.param(params));
+iframe.appendTo("body");
+
+// 方法三
+$http
+  .get(action, { params: params, responseType: "blob" })
+  .then(function(response) {
+    console.log(response);
+    var url = window.URL.createObjectURL(new Blob([response.data]));
+    var link = document.createElement("a");
+    link.href = url;
+    var fileName = response
+      .headers("Content-Disposition")
+      .split("filename=")[1];
+    link.setAttribute("download", decodeURIComponent(fileName));
+    document.body.appendChild(link);
+    link.click();
+  });
 ```
 
 ### 遇到资源路径的问题时，使用 base 标签
@@ -81,7 +106,7 @@ var downloadFile = function(fileName, filePath) {
 ### delete 是 ie8 的关键字，方法调用时写成这样的形式
 
 ```javascript
-xxx['delete'].xxx();
+xxx["delete"].xxx();
 ```
 
 ### 解决 ie8 不支持 background-size:cover; 图片覆盖
@@ -107,7 +132,7 @@ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='*.jpg', sizingMe
 ### window.open 打开 ajax 返回的链接会被拦截，用以下办法处理
 
 ```javascript
-var newTab = window.open('about:blank');
+var newTab = window.open("about:blank");
 xxx.get().then(function(data) {
   //使用replace，新页面不会出现后退，如果用 location.href='xxx'，会有后退
   newTab.location.replace(data.content.content);
@@ -151,8 +176,9 @@ xxx.get().then(function(data) {
 <div class="img_wrap">
   <img src="wgs.jpg" />
 </div>
-.img_wrap{ // 不能加浮动（若增加一个父级元素） width: 400px; height: 300px; display: table-cell;
-//主要是这个属性 vertical-align: middle; text-align: center; }
+.img_wrap{ // 不能加浮动（若增加一个父级元素） width: 400px; height: 300px;
+display: table-cell; //主要是这个属性 vertical-align: middle; text-align:
+center; }
 ```
 
 ### 离开或刷新页面进行提示
@@ -160,12 +186,12 @@ xxx.get().then(function(data) {
 ```javascript
 //检测离开页面提醒操作
 var UnloadConfirm = {};
-UnloadConfirm.MSG_UNLOAD = '确定要放弃编辑吗？您离开后数据将不会被保存。';
+UnloadConfirm.MSG_UNLOAD = "确定要放弃编辑吗？您离开后数据将不会被保存。";
 UnloadConfirm.set = function(text) {
   window.onbeforeunload = function(e) {
     e = e || window.event;
     // 兼容ie8 ie8的退出显示这里的数据
-    e.returnValue = '确定要放弃编辑吗？您离开后数据将不会被保存。';
+    e.returnValue = "确定要放弃编辑吗？您离开后数据将不会被保存。";
     return text;
   };
 };
@@ -184,12 +210,12 @@ window.onunload = function whenUnload() {
 
 ```javascript
 (function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
+  if (typeof define === "function" && define.amd) {
     // AMD
-    define(['jquery'], factory);
-  } else if (typeof exports === 'object') {
+    define(["jquery"], factory);
+  } else if (typeof exports === "object") {
     // Node, CommonJS之类的
-    module.exports = factory(require('jquery'));
+    module.exports = factory(require("jquery"));
   } else {
     // 浏览器全局变量(root 即 window)
     root.returnExports = factory(root.jQuery);
@@ -208,7 +234,7 @@ window.onunload = function whenUnload() {
 ```javascript
 function hideMobileMid(mobile) {
   var reg = /^(\d{3})\d{4}(\d{4})$/;
-  return mobile.replace(reg, '$1****$2');
+  return mobile.replace(reg, "$1****$2");
 }
 ```
 
@@ -234,11 +260,11 @@ function hideMobileMid(mobile) {
 ```javascript
 // 打开弹窗时，阻止body滚动
 top = $(document).scrollTop(); // 获取当前滚动偏移量
-$body.css('top', -1 * top); // 为body设置top
-$body.addClass('fixed-body-hook'); // 为body增加fixed样式
+$body.css("top", -1 * top); // 为body设置top
+$body.addClass("fixed-body-hook"); // 为body增加fixed样式
 // 还原body滚动
-$body.removeClass('fixed-body-hook');
-$body.css('top', '');
+$body.removeClass("fixed-body-hook");
+$body.css("top", "");
 $(document).scrollTop(top);
 ```
 
@@ -271,9 +297,9 @@ function getNaturalSize(element) {
 ### 千分位
 
 ```javascript
-Number('1234564').toLocaleString();
+Number("1234564").toLocaleString();
 vartoThousands = function(number) {
-  return (number + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+  return (number + "").replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 };
 ```
 
@@ -281,7 +307,10 @@ vartoThousands = function(number) {
 
 ```html
 <!-- 隐藏的input, 为了禁用浏览器的用户名密码表单自动填充 -->
-<input type="password" style="height: 0;padding: 0;width: 0;border: 0;position: absolute;" />
+<input
+  type="password"
+  style="height: 0;padding: 0;width: 0;border: 0;position: absolute;"
+/>
 
 <!-- password上加属性 -->
 <input type="password" autocomplete="new-password" />
@@ -318,11 +347,11 @@ const getNodeById = (id, menus) => {
   // 定义变量保存当前结果路径
   let result;
   function getNode(nodes) {
-    forEach(nodes, item => {
+    forEach(nodes, (item) => {
       // 找到符合条件的节点，通过throw终止掉递归
       if (item.key === id) {
         result = item;
-        throw 'GOT IT!';
+        throw "GOT IT!";
       }
       if (item.children && item.children.length > 0) {
         getNode(item.children);
@@ -343,8 +372,8 @@ const getNodeById = (id, menus) => {
 ### 用\$last 控制最后一个元素的 class
 
 ```html
-<li ng-repeat="rule in rules | orderBy:\'-date\'" class="ellipsis"' 'ng-class="{\'last\':$last}"
-ui-sref="rules.detail({id: rule.id})">
+<li ng-repeat="rule in rules | orderBy:\'-date\'" class="ellipsis"'
+'ng-class="{\'last\':$last}" ui-sref="rules.detail({id: rule.id})">
 ```
 
 ### 绑定 html
@@ -370,8 +399,12 @@ s.json = angular.toJson(s.obj);
 
 ```html
 <label ng-if="!item.expand" style="word-break: break-all;font-weight: normal">
-  {{item.content | limitTo:120}}<span ng-if="item.content.length>120">....</span>
-  <a ng- if="item.content.length>120" ng-click="item.expand=true">更多</a></label
+  {{item.content | limitTo:120}}<span ng-if="item.content.length>120"
+    >....</span
+  >
+  <a ng- if="item.content.length>120" ng-click="item.expand=true"
+    >更多</a
+  ></label
 >
 <label ng-if="item.expand" style="word-break: break-all;font-weight: normal"
   >{{item.content }}<a ng-click="item.expand=false">收起</a></label
@@ -397,16 +430,16 @@ s.json = angular.toJson(s.obj);
 ```javascript
 $timeout(function() {
   var width;
-  $('.ellipsis').each(function() {
+  $(".ellipsis").each(function() {
     width = $(this)
-      .css('width')
+      .css("width")
       .slice(0, -2);
     if ($(this)[0].scrollWidth > width) $(this).tipsy({ fade: true });
     else {
-      $(this).removeAttr('title');
+      $(this).removeAttr("title");
     }
     $(this).click(function() {
-      $('.tipsy').remove();
+      $(".tipsy").remove();
     });
   });
 });
