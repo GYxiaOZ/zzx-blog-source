@@ -367,6 +367,19 @@ const getNodeById = (id, menus) => {
 };
 ```
 
+### 获取元素到 body 的距离
+
+```javascript
+function getOffsetTopByBody(el) {
+  let offsetTop = 0;
+  while (el && el.tagName !== "BODY") {
+    offsetTop += el.offsetTop;
+    el = el.offsetParent;
+  }
+  return offsetTop;
+}
+```
+
 ## angular1.x
 
 ### 用\$last 控制最后一个元素的 class
