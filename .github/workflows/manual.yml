@@ -23,16 +23,16 @@ jobs:
         uses: wlixcc/SFTP-Deploy-Action@1.1
         with:
           # username
-          username: 'root'
+          username: root
           # your sftp server
-          server: '${{ secrets.SERVER_IP }}'
+          server: ${{ secrets.SERVER_IP }}
           # your sftp server port, default to 22
           port: 22 # default is 22
           # you can copy private_key from your *.pem file, keep format
-          ssh_private_key: '${{ secrets.SSH_PRIVATE_KEY }}'
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           # will put all file under this path
-          local_path: './public/*'
+          local_path: ./public/*
           # files will copy to under remote_path
-          remote_path: '/home/zzx/test'
+          remote_path: /home/zzx/test
           # sftp args
           # args: # optional
