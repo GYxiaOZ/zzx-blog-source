@@ -4,17 +4,7 @@ name: Manual workflow
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
-on:
-  workflow_dispatch:
-    # Inputs the workflow accepts.
-    inputs:
-      name:
-        # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
-        # Default value if no value is explicitly provided
-        default: 'World'
-        # Input has to be provided for the workflow to run
-        required: true
+on: [push]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -25,25 +15,22 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "Hello ${{ github.event.inputs.name }}"
-    - name: SFTP Deploy
-      # You may pin to the exact commit or the version.
-      # uses: wlixcc/SFTP-Deploy-Action@cf8d9e5b504ce4aab358e6231495c72a7dc18dcd
-      uses: wlixcc/SFTP-Deploy-Action@1.1
-      with:
-        # username
-        username: root
-        # your sftp server
-        server: '${{ secrets.SERVER_IP }}'
-        # your sftp server port, default to 22
-        port: 22 # default is 22
-        # you can copy private_key from your *.pem file, keep format
-        ssh_private_key: '${{ secrets.SSH_PRIVATE_KEY }}'
-        # will put all file under this path
-        local_path: './build/*'
-        # files will copy to under remote_path
-        remote_path: '/home/zzx/test'
-        # sftp args
-        # args: # optional
+      - name: SFTP Deploy
+        # You may pin to the exact commit or the version.
+        # uses: wlixcc/SFTP-Deploy-Action@cf8d9e5b504ce4aab358e6231495c72a7dc18dcd
+        uses: wlixcc/SFTP-Deploy-Action@1.1
+        with:
+          # username
+          username: root
+          # your sftp server
+          server: '${{ secrets.SERVER_IP }}'
+          # your sftp server port, default to 22
+          port: 22 # default is 22
+          # you can copy private_key from your *.pem file, keep format
+          ssh_private_key: '${{ secrets.SSH_PRIVATE_KEY }}'
+          # will put all file under this path
+          local_path: './build/*'
+          # files will copy to under remote_path
+          remote_path: '/home/zzx/test'
+          # sftp args
+          # args: # optional
