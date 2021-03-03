@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>继承 | xiaOz&#39;s blog</title>
+  <title>5.闭包 | xiaOz&#39;s blog</title>
   
   <meta name="keywords" content="前端">
   
@@ -256,8 +256,8 @@
         
   
     <h1 class="title">
-      <a href="/2021/01/21/interview/3.%E7%BB%A7%E6%89%BF/">
-        继承
+      <a href="/2021/01/20/interview/5.%E9%97%AD%E5%8C%85/">
+        5.闭包
       </a>
     </h1>
   
@@ -286,7 +286,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2021-01-21</p>
+    <p>2021-01-20</p>
   </a>
 </div>
 
@@ -338,9 +338,43 @@
 
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
-          <h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">"parent1"</span>;</span><br><span class="line">  <span class="keyword">this</span>.play = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.type = <span class="string">"child2"</span>;</span><br><span class="line">&#125;</span><br><span class="line">Child1.prototype = <span class="keyword">new</span> Parent1();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> Child1());</span><br></pre></td></tr></table></figure>
+          <p>JavaScript 中的闭包是相当重要的概念，也是面试经常问到的点，这一篇我们来把它搞清楚</p>
+<h2 id="关于作用域"><a href="#关于作用域" class="headerlink" title="关于作用域"></a>关于作用域</h2><p>作用域简单说就是变量能访问到的范围，ES5 之前只有全局作用域和函数作用域两种。ES6 出现之后，又新增了块级作用域</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>闭包其实就是一个可以访问其他函数内部变量的函数。看一个例子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun1();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = fun1();</span><br><span class="line"></span><br><span class="line">result(); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
+
+<h2 id="闭包产生的原因"><a href="#闭包产生的原因" class="headerlink" title="闭包产生的原因"></a>闭包产生的原因</h2><p>当访问一个变量时，代码解释器会首先在当前的作用域查找，如果没找到，就去父级作用域去查找，直到找到该变量或者不存在父级作用域中，这样的链路就是作用域链</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fun2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(a); <span class="comment">//3</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以可以理解闭包的功能就是可以访问上级作用域而不影响全局作用域</p>
+<h3 id="IIFE（立即执行函数）"><a href="#IIFE（立即执行函数）" class="headerlink" title="IIFE（立即执行函数）"></a>IIFE（立即执行函数）</h3><p>IIFE 是一种自执行匿名函数，这个匿名函数拥有独立的作用域。不仅可以避免了外界访问此 IIFE 中的变量，而且又不会污染全局作用域</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">IIFE</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a); <span class="comment">// 输出2</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>一道经典面试题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i); <span class="comment">// 5个6</span></span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原因：</p>
+<ol>
+<li>setTimeout 为宏任务，由于 JS 中单线程 eventLoop 机制，在主线程同步任务执行完后才去执行宏任务，因此循环结束后 setTimeout 中的回调才依次执行</li>
+<li>因为 setTimeout 函数也是一种闭包，往上找它的父级作用域链就是 window，变量 i 为 window 上的全局变量，开始执行 setTimeout 之前变量 i 已经就是 6 了，因此最后输出的连续就都是 6</li>
+</ol>
+<p>解决：</p>
+<ol>
+<li>使用 IIFE</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span> (<span class="params">j</span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(j);</span><br><span class="line">    &#125;, <span class="number">0</span>);</span><br><span class="line">  &#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用 es6 的 let</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>setTimeout 的第三个参数（用的比较少）</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">  setTimeout(</span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">j</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(j);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="number">0</span>,</span><br><span class="line">    i</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -352,10 +386,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-01-21T10:04:50+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-03T11:51:06+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2021年1月21日</p>
+    <p>最后更新于 2021年3月3日</p>
   </a>
 </div>
 
@@ -377,7 +411,10 @@
       
         <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.xiaoz.site/2021/01/21/interview/3.%E7%BB%A7%E6%89%BF/&title=继承 | xiaOz's blog&summary=原型链123456789function Parent1() &#123;  this.name = "parent1";  this.play = [1, 2, 3];&#125;function Child1() &#123;  this.type = "child2";&#125;Child1.prototype = new Parent1();console.log(new Child1());"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.xiaoz.site/2021/01/20/interview/5.%E9%97%AD%E5%8C%85/&title=5.闭包 | xiaOz's blog&summary=JavaScript 中的闭包是相当重要的概念，也是面试经常问到的点，这一篇我们来把它搞清楚
+关于作用域作用域简单说就是变量能访问到的范围，ES5 之前只有全局作用域和函数作用域两种。ES6 出现之后，又新增了块级作用域
+闭包闭包其实就是一个可以访问其他函数内部变量的函数。看一个例子
+12345678910111213function fun1() &#123;  var a = 1;  return function () &#123;    console.log(a);  &#125;;&#125;fun1();var result = fun1();result(); // 1"
           
           >
           
@@ -389,7 +426,10 @@
       
         <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://blog.xiaoz.site/2021/01/21/interview/3.%E7%BB%A7%E6%89%BF/&title=继承 | xiaOz's blog&summary=原型链123456789function Parent1() &#123;  this.name = "parent1";  this.play = [1, 2, 3];&#125;function Child1() &#123;  this.type = "child2";&#125;Child1.prototype = new Parent1();console.log(new Child1());"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://blog.xiaoz.site/2021/01/20/interview/5.%E9%97%AD%E5%8C%85/&title=5.闭包 | xiaOz's blog&summary=JavaScript 中的闭包是相当重要的概念，也是面试经常问到的点，这一篇我们来把它搞清楚
+关于作用域作用域简单说就是变量能访问到的范围，ES5 之前只有全局作用域和函数作用域两种。ES6 出现之后，又新增了块级作用域
+闭包闭包其实就是一个可以访问其他函数内部变量的函数。看一个例子
+12345678910111213function fun1() &#123;  var a = 1;  return function () &#123;    console.log(a);  &#125;;&#125;fun1();var result = fun1();result(); // 1"
           
           >
           
@@ -401,7 +441,10 @@
       
         <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://blog.xiaoz.site/2021/01/21/interview/3.%E7%BB%A7%E6%89%BF/&title=继承 | xiaOz's blog&summary=原型链123456789function Parent1() &#123;  this.name = "parent1";  this.play = [1, 2, 3];&#125;function Child1() &#123;  this.type = "child2";&#125;Child1.prototype = new Parent1();console.log(new Child1());"
+          href="http://service.weibo.com/share/share.php?url=https://blog.xiaoz.site/2021/01/20/interview/5.%E9%97%AD%E5%8C%85/&title=5.闭包 | xiaOz's blog&summary=JavaScript 中的闭包是相当重要的概念，也是面试经常问到的点，这一篇我们来把它搞清楚
+关于作用域作用域简单说就是变量能访问到的范围，ES5 之前只有全局作用域和函数作用域两种。ES6 出现之后，又新增了块级作用域
+闭包闭包其实就是一个可以访问其他函数内部变量的函数。看一个例子
+12345678910111213function fun1() &#123;  var a = 1;  return function () &#123;    console.log(a);  &#125;;&#125;fun1();var result = fun1();result(); // 1"
           
           >
           
@@ -429,17 +472,12 @@
                         <span class="art-item-left">
                             <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
                             <h4>
-                                <a href="/2021/01/21/interview/1.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="prev" title="数据类型">
+                                <a href="/2021/01/21/commander/" rel="prev" title="Commander.js">
                                   
-                                      数据类型
+                                      Commander.js
                                   
                                 </a>
                             </h4>
-                            
-                                
-                                <h6 class="tags">
-                                    <a class="tag" href="/tags/js/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>js</a>
-                                </h6>
                             
                         </span>
                     </section>
@@ -449,9 +487,9 @@
                         <span class="art-item-right" aria-hidden="true">
                             <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
-                                <a href="/2021/01/21/interview/2.%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" rel="prev" title="深浅拷贝">
+                                <a href="/2021/01/15/interview/4.new%E3%80%81apply%E3%80%81call%E3%80%81bind/" rel="prev" title="4.new、apply、call、bind">
                                     
-                                        深浅拷贝
+                                        4.new、apply、call、bind
                                     
                                 </a>
                             </h4>
@@ -501,7 +539,7 @@
 
   <script>
     window.subData = {
-      title: '继承',
+      title: '5.闭包',
       tools: true
     }
   </script>
@@ -581,7 +619,7 @@
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原型链"><span class="toc-text">原型链</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于作用域"><span class="toc-text">关于作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#闭包"><span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#闭包产生的原因"><span class="toc-text">闭包产生的原因</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IIFE（立即执行函数）"><span class="toc-text">IIFE（立即执行函数）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面试题"><span class="toc-text">面试题</span></a></li></ol>
     </div>
   </section>
 
@@ -676,7 +714,7 @@
         
           <li><a class="flat-box child" title="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/typescript/" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/typescript/"><div class='name'>typescript</div><div class='badge'>(7)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/%E9%9D%A2%E8%AF%95/" href="/categories/%E9%9D%A2%E8%AF%95/"><div class='name'>面试</div><div class='badge'>(3)</div></a></li>
+          <li><a class="flat-box" title="/categories/%E9%9D%A2%E8%AF%95/" href="/categories/%E9%9D%A2%E8%AF%95/"><div class='name'>面试</div><div class='badge'>(8)</div></a></li>
         
       </ul>
     </div>
@@ -707,7 +745,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/js/" style="font-size: 17.33px; color: #828282">js</a> <a href="/tags/react/" style="font-size: 14px; color: #999">react</a> <a href="/tags/tips/" style="font-size: 20.67px; color: #6c6c6c">tips</a> <a href="/tags/typescript/" style="font-size: 24px; color: #555">typescript</a>
+      <a href="/tags/js/" style="font-size: 24px; color: #555">js</a> <a href="/tags/react/" style="font-size: 14px; color: #999">react</a> <a href="/tags/tips/" style="font-size: 17.33px; color: #828282">tips</a> <a href="/tags/typescript/" style="font-size: 20.67px; color: #6c6c6c">typescript</a>
     </div>
   </section>
 

@@ -33,6 +33,8 @@ tags:
 - [chalk](https://github.com/chalk/chalk)：给命令行加颜色
 - [inquirer](https://github.com/SBoudrias/Inquirer.js)：交互式命令行
 
+<!-- more -->
+
 既然是用于创建文件的，那我们就叫做 `mk-cli` 吧，在你的命令行工具依次执行以下命令：
 
 ```bash
@@ -61,3 +63,7 @@ yarn add commander chalk inquirer
 问题：`Suggestion [3,General]: 找不到命令 xxx，但它确实存在于当前位置。默认情况下，Windows PowerShell 不会从当前位置加载命令。如果信任此命令，请改为键入“.\xxx”。有关详细信息，请参阅 "get-help about_Command_Precedence"。`，可能是另一种错误提示，解决方法相同
 
 解决：管理员打开 powershell 执行 `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` [参考](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.1)
+
+### 待更新
+
+暂时没得精力写教程，可以直接先看我写的代码 [learn-commander](https://gitee.com/gyxiaoz/learn-commander)
