@@ -265,9 +265,111 @@
         
           
         
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2021/03/21/interview/9.%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%811/">
+      9.手写代码：一. eventBus
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="https://blog.xiaoz.site" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>xiaOz</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2021-03-21</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E9%9D%A2%E8%AF%95/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>面试</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>会更新一些常见的手写代码实现，加深一下印象，这里是第一篇，后续会继续更新 promise,curry,debounce,throttling 等</p>
+<p>EventBus 是基于 订阅/发布 模式实现的，基于事件的异步分发处理系统</p>
+<h2 id="手写-eventBus"><a href="#手写-eventBus" class="headerlink" title="手写 eventBus"></a>手写 eventBus</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">EventBus</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>._events = &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断是否是合法的 listener</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isValidListener</span>(<span class="params">listener</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> listener === <span class="string">'function'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (listener &amp;&amp; <span class="keyword">typeof</span> listener === <span class="string">'object'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> isValidListener(listener.listener);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断新增自定义事件是否存在</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">indexOf</span>(<span class="params">array, item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">-1</span>;</span><br><span class="line">  item = <span class="keyword">typeof</span> item === <span class="string">'object'</span> ? item.listener : item;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, len = array.length; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (array[i].listener === item) &#123;</span><br><span class="line">      result = i;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">EventBus.prototype.on = <span class="function"><span class="keyword">function</span> (<span class="params">eventName, listener</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!eventName || !listener) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">if</span> (!isValidListener(listener)) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'listener must be a function'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> events = <span class="keyword">this</span>._events;</span><br><span class="line">  events[eventName] = events[eventName] || [];</span><br><span class="line">  <span class="keyword">const</span> listenerList = events[eventName];</span><br><span class="line">  <span class="keyword">const</span> listenerIsWrapped = <span class="keyword">typeof</span> listener === <span class="string">'object'</span>;</span><br><span class="line">  <span class="keyword">if</span> (indexOf(listenerList, listener) === <span class="number">-1</span>) &#123;</span><br><span class="line">    listenerList.push(</span><br><span class="line">      listenerIsWrapped</span><br><span class="line">        ? listener</span><br><span class="line">        : &#123;</span><br><span class="line">            listener,</span><br><span class="line">            once: <span class="literal">false</span>,</span><br><span class="line">          &#125;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">EventBus.prototype.emit = <span class="function"><span class="keyword">function</span> (<span class="params">eventName, args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> listenerList = <span class="keyword">this</span>._events[eventName];</span><br><span class="line">  <span class="keyword">if</span> (!listenerList) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; listenerList.length; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> listener = listenerList[i];</span><br><span class="line">    <span class="keyword">if</span> (listener) &#123;</span><br><span class="line">      listener.listener.apply(<span class="keyword">this</span>, args || []);</span><br><span class="line">      <span class="keyword">if</span> (listener.once) &#123;</span><br><span class="line">        <span class="keyword">this</span>.off(eventName, listener.listener);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">EventBus.prototype.off = <span class="function"><span class="keyword">function</span> (<span class="params">eventName, listener</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> listenerList = <span class="keyword">this</span>._events[eventName];</span><br><span class="line">  <span class="keyword">if</span> (!listenerList) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">let</span> index;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; listenerList.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (listenerList[i] &amp;&amp; listenerList[i].listener === listener) &#123;</span><br><span class="line">      index = i;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> index !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">    listenerList.splice(index, <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">EventBus.prototype.once = <span class="function"><span class="keyword">function</span> (<span class="params">eventName, listener</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.on(eventName, &#123;</span><br><span class="line">    listener,</span><br><span class="line">    once: <span class="literal">true</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">EventBus.prototype.allOff = <span class="function"><span class="keyword">function</span> (<span class="params">eventName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (eventName &amp;&amp; <span class="keyword">this</span>._events[eventName]) &#123;</span><br><span class="line">    <span class="keyword">this</span>._events[eventName] = [];</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>._events = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/js/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>js</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -1306,7 +1408,7 @@
         
           <li><a class="flat-box child" title="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/typescript/" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/typescript/"><div class='name'>typescript</div><div class='badge'>(7)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/%E9%9D%A2%E8%AF%95/" href="/categories/%E9%9D%A2%E8%AF%95/"><div class='name'>面试</div><div class='badge'>(8)</div></a></li>
+          <li><a class="flat-box" title="/categories/%E9%9D%A2%E8%AF%95/" href="/categories/%E9%9D%A2%E8%AF%95/"><div class='name'>面试</div><div class='badge'>(9)</div></a></li>
         
       </ul>
     </div>
