@@ -15,7 +15,7 @@ favicon: https://cdn.jsdelivr.net/gh/gyxiaoz/image-hosting@master/favicon.ico
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://blog.xiaoz.site/
+url: http://www.xiaoz.site/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
